@@ -105,13 +105,13 @@ PRAGYA/
 To run the development server locally:
 
 ```bash
-# 1. Install dependencies (already installed)
+# 1. Install dependencies
 npm install
 
 # 2. Run the development server
 npm run dev
 
-# 3. Build for production and verify TypeScript
+# 3. Build for production (generates Prisma client, compiles TS, builds bundle)
 npm run build
 
 # 4. Preview production build
@@ -122,5 +122,24 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
+## ☁️ Vercel Production Deployment
+
+To deploy PRAGYA to Vercel:
+
+1. Connect the GitHub repository to your Vercel account.
+2. In the **Vercel Project Dashboard**, navigate to:
+   - **Settings** → **Environment Variables**
+3. Add the following required environment variable:
+   - `DATABASE_URL`: Your Neon PostgreSQL pooled connection string (with `?sslmode=require`).
+4. (Optional) Configure server-side meteorological credentials if connecting external providers:
+   - `MOSDAC_USERNAME`, `MOSDAC_PASSWORD`
+   - `IMD_API_KEY`
+   - `CDS_API_KEY`
+   - `NASA_EARTHDATA_USERNAME`, `NASA_EARTHDATA_PASSWORD`
+5. Deploy. Vercel automatically runs `npm run build` which invokes `prisma generate`, TypeScript type verification, and Vite production bundling. All serverless endpoints under `/api/*` run seamlessly via Vercel serverless execution.
+
+---
+
 ## ⚠️ Statutory Notice
 PRAGYA is an experimental scientific research architecture. It does **NOT** replace official meteorological warnings issued by the India Meteorological Department (IMD) or State Disaster Management Authorities.
+

@@ -39,11 +39,15 @@ export async function handleApiRequest(
       let obsCount = 0;
 
       try {
-        eventCount = await prisma.historicalEvent.count();
-        obsCount = await prisma.atmosphericObservation.count();
-        dbStatus = 'CONNECTED';
+        if (!process.env.DATABASE_URL) {
+          dbStatus = 'DATABASE_URL_NOT_CONFIGURED';
+        } else {
+          eventCount = await prisma.historicalEvent.count();
+          obsCount = await prisma.atmosphericObservation.count();
+          dbStatus = 'CONNECTED';
+        }
       } catch (err: any) {
-        dbStatus = 'ERROR: ' + err.message;
+        dbStatus = 'DATABASE_UNAVAILABLE';
       }
 
       return {
@@ -80,9 +84,14 @@ export async function handleApiRequest(
 
     // 3. HISTORICAL EVENTS
     if (pathname === '/api/events') {
-      const events = await prisma.historicalEvent.findMany({
-        orderBy: { startTime: 'desc' },
-      });
+      let events: any[] = [];
+      try {
+        events = await prisma.historicalEvent.findMany({
+          orderBy: { startTime: 'desc' },
+        });
+      } catch {
+        events = [];
+      }
       return {
         status: 200,
         headers: jsonHeaders,
@@ -107,11 +116,16 @@ export async function handleApiRequest(
         }
       }
 
-      const observations = await prisma.atmosphericObservation.findMany({
-        where: whereClause,
-        orderBy: { observedAt: 'asc' },
-        take: 300,
-      });
+      let observations: any[] = [];
+      try {
+        observations = await prisma.atmosphericObservation.findMany({
+          where: whereClause,
+          orderBy: { observedAt: 'asc' },
+          take: 300,
+        });
+      } catch {
+        observations = [];
+      }
 
       return {
         status: 200,
@@ -421,11 +435,14 @@ export async function handleApiRequest(
       data: { error: 'Endpoint not found', path: pathname },
     };
   } catch (error: any) {
-    console.error(`[API Handler Error] ${pathname}:`, error);
+    console.error(`[API Handler Error] ${pathname}:`, error?.message || error);
+    const safeMsg = process.env.NODE_ENV === 'production'
+      ? 'An error occurred while processing the scientific request.'
+      : (error?.message || 'Internal scientific server error').replace(/postgresql:\/\/[^\s]+/gi, 'postgresql://[REDACTED]');
     return {
       status: 500,
       headers: jsonHeaders,
-      data: { error: 'Internal scientific server error', message: error.message },
+      data: { error: 'Internal scientific server error', message: safeMsg },
     };
   }
 }
