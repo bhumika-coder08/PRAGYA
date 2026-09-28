@@ -1,0 +1,294 @@
+// PRAGYA — Predictability & Rapid Atmospheric Genesis Intelligence Architecture
+// Prisma 7 Schema for Neon PostgreSQL Persistent Research Store
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// -------------------------------------------------------------
+// Enums
+// -------------------------------------------------------------
+
+enum SourceType {
+  SATELLITE
+  RADAR
+  REANALYSIS
+  NWP
+  SURFACE_STATION
+  SYNTHETIC
+}
+
+enum EventType {
+  CLOUDBURST
+  FLASH_FLOOD
+  SEVERE_CONVECTION
+  NEAR_MISS
+}
+
+enum EventSeverity {
+  MINOR
+  MODERATE
+  SEVERE
+  CATASTROPHIC
+}
+
+enum QualityStatus {
+  VALID
+  SUSPECT
+  MISSING
+  INTERPOLATED
+  SYNTHETIC
+}
+
+enum ExperimentStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+enum PredictabilityState {
+  INSUFFICIENT_OBSERVATION
+  PRE_CONVECTIVE_EMERGENCE
+  RAPID_ORGANIZATION
+  IMMINENT_EVENT
+  UNPREDICTABLE_CHAOTIC
+}
+
+enum GapType {
+  RADAR_SILENCE
+  SATELLITE_LATENCY
+  SOUNDING_DEFICIT
+  SURFACE_SPARSITY
+  SENSOR_DEGRADATION
+}
+
+enum GapSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum AlertType {
+  PRE_CONVECTIVE_WATCH
+  CONVECTIVE_WARNING
+  CLOUDBURST_IMMINENT
+  OBSERVATION_DEGRADED
+}
+
+enum AlertStatus {
+  DRAFT
+  ACTIVE
+  EXPIRED
+  CANCELLED
+}
+
+// -------------------------------------------------------------
+// Models
+// -------------------------------------------------------------
+
+model DataSource {
+  id                 String       @id @default(cuid())
+  name               String
+  provider           String       // e.g., "IMD", "INSAT-3DR", "ERA5", "WRF-SIM", "SYNTHETIC-RADAR"
+  sourceType         SourceType
+  description        String?
+  spatialResolution  String?      // e.g., "4km", "1km", "0.25 deg"
+  temporalResolution String?      // e.g., "15m", "1h", "10m"
+  accessUrl          String?
+  isOperational      Boolean      @default(false)
+  metadata           Json?
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+
+  observations       AtmosphericObservation[]
+
+  @@map("data_sources")
+}
+
+model HistoricalEvent {
+  id                   String                 @id @default(cuid())
+  eventCode            String                 @unique // e.g. "EVT-2023-DHR", "EVT-2024-KLL"
+  name                 String
+  eventType            EventType
+  eventClass           String                 @default("HISTORICAL") // "HISTORICAL", "SIMULATED", "SYNTHETIC_BENCHMARK"
+  description          String?
+  startTime            DateTime
+  peakTime             DateTime
+  endTime              DateTime
+  latitude             Float
+  longitude            Float
+  locationName         String
+  stateRegion          String
+  country              String                 @default("India")
+  severity             EventSeverity
+  groundTruthConfidence Float                 @default(1.0)
+  isNearMiss           Boolean                @default(false)
+  groundTruthSource    String?
+  metadata             Json?
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @updatedAt
+
+  observations         AtmosphericObservation[]
+  experimentRuns       ExperimentRun[]
+  predictionSnapshots  PredictionSnapshot[]
+  observationGaps      ObservationGap[]
+  alerts               Alert[]
+
+  @@map("historical_events")
+}
+
+model AtmosphericObservation {
+  id               String          @id @default(cuid())
+  eventId          String?
+  dataSourceId     String
+  observedAt       DateTime        // Physical sensor timestamp
+  availableAt      DateTime        // Telemetry arrival timestamp (Strict Temporal Time-Gating)
+  latitude         Float
+  longitude        Float
+  altitude         Float?          // Meters or hPa level
+  variable         String          // e.g. "reflectivity", "cape", "precipitable_water", "vertical_velocity"
+  value            Float?          // Nullable for scientific missing/unreported values (NEVER zero-fill!)
+  unit             String          // "dBZ", "J/kg", "mm", "m/s", "degC"
+  qualityStatus    QualityStatus   @default(VALID)
+  observationType  String          @default("POINT") // "POINT", "GRID", "PROFILE"
+  isDerived        Boolean         @default(false)
+  metadata         Json?
+  createdAt        DateTime        @default(now())
+
+  event            HistoricalEvent? @relation(fields: [eventId], references: [id], onDelete: SetNull)
+  dataSource       DataSource       @relation(fields: [dataSourceId], references: [id], onDelete: Cascade)
+
+  @@index([eventId, availableAt, observedAt])
+  @@index([variable, availableAt])
+  @@map("atmospheric_observations")
+}
+
+model ModelVersion {
+  id             String          @id @default(cuid())
+  name           String          // e.g. "PRAGYA-ENSEMBLE-CORE"
+  version        String          @unique // e.g. "v0.1-demo", "v1.0-research"
+  description    String?
+  modelType      String          // e.g. "HYBRID_PHYSICAL_STATISTICAL", "CONVECTIVE_RANDOM_FOREST"
+  configuration  Json?
+  featureSet     Json?
+  createdAt      DateTime        @default(now())
+
+  experimentRuns ExperimentRun[]
+
+  @@map("model_versions")
+}
+
+model ExperimentRun {
+  id                      String                 @id @default(cuid())
+  name                    String
+  description             String?
+  historicalEventId       String?
+  modelVersionId          String?
+  status                  ExperimentStatus       @default(COMPLETED)
+  startedAt               DateTime?
+  completedAt             DateTime?
+  configuration           Json?
+  predictabilityThreshold Float                  @default(0.70)
+  persistenceMinutes      Int                    @default(30)
+  randomSeed              Int?
+  notes                   String?
+  createdAt               DateTime               @default(now())
+  updatedAt               DateTime               @updatedAt
+
+  historicalEvent         HistoricalEvent?       @relation(fields: [historicalEventId], references: [id], onDelete: SetNull)
+  modelVersion            ModelVersion?          @relation(fields: [modelVersionId], references: [id], onDelete: SetNull)
+  predictionSnapshots     PredictionSnapshot[]
+  observationGaps         ObservationGap[]
+
+  @@map("experiment_runs")
+}
+
+model PredictionSnapshot {
+  id                    String              @id @default(cuid())
+  experimentRunId       String
+  historicalEventId     String?
+  predictionTime        DateTime            // Analysis time T (Strictly availableAt <= T)
+  leadTimeMinutes       Int                 // e.g. 15, 30, 45, 60, 120
+  eventRisk             Float               // 0.0 - 1.0
+  predictability        Float               // 0.0 - 1.0
+  observationConfidence Float               // 0.0 - 1.0
+  predictabilityState   PredictabilityState
+  explanation           String?
+  featureContributions  Json?
+  createdAt             DateTime            @default(now())
+
+  experimentRun         ExperimentRun       @relation(fields: [experimentRunId], references: [id], onDelete: Cascade)
+  historicalEvent       HistoricalEvent?    @relation(fields: [historicalEventId], references: [id], onDelete: SetNull)
+  ensembleResults       EnsembleResult[]
+
+  @@index([experimentRunId, predictionTime])
+  @@index([historicalEventId, predictionTime])
+  @@map("prediction_snapshots")
+}
+
+model EnsembleResult {
+  id                    String              @id @default(cuid())
+  predictionSnapshotId  String
+  memberIndex           Int                 // 0..19 (20 members)
+  futureTimestamp       DateTime
+  latitude              Float?
+  longitude             Float?
+  intensity             Float?
+  probability           Float?
+  futureState           String?             // "DISSIPATION", "INTENSIFICATION", "SUPERCELL"
+  createdAt             DateTime            @default(now())
+
+  predictionSnapshot    PredictionSnapshot  @relation(fields: [predictionSnapshotId], references: [id], onDelete: Cascade)
+
+  @@index([predictionSnapshotId, memberIndex])
+  @@map("ensemble_results")
+}
+
+model ObservationGap {
+  id                     String          @id @default(cuid())
+  experimentRunId        String?
+  historicalEventId      String?
+  detectedAt             DateTime
+  gapType                GapType
+  variable               String
+  latitude               Float?
+  longitude              Float?
+  altitude               Float?
+  severity               GapSeverity
+  description            String
+  impactOnConfidence     Float?          // e.g. -0.25
+  recommendedObservation String?
+  metadata               Json?
+  createdAt              DateTime        @default(now())
+
+  experimentRun          ExperimentRun?  @relation(fields: [experimentRunId], references: [id], onDelete: SetNull)
+  historicalEvent        HistoricalEvent? @relation(fields: [historicalEventId], references: [id], onDelete: SetNull)
+
+  @@map("observation_gaps")
+}
+
+model Alert {
+  id                String          @id @default(cuid())
+  historicalEventId String?
+  createdAt         DateTime        @default(now())
+  alertType         AlertType
+  severity          EventSeverity
+  title             String
+  message           String
+  language          String          @default("en")
+  latitude          Float?
+  longitude         Float?
+  status            AlertStatus     @default(ACTIVE)
+  metadata          Json?
+
+  historicalEvent   HistoricalEvent? @relation(fields: [historicalEventId], references: [id], onDelete: SetNull)
+
+  @@map("alerts")
+}

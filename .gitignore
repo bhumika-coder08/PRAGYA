@@ -1,0 +1,30 @@
+# Environment variables / secrets
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel
+/generated/prisma
+# AI / IDE generated skill folders
+.agents/
+.claude/
+.cursor/
+.devin/
+.windsurf/
+
+# Temporary development files
+scratch/
