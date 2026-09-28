@@ -19,6 +19,7 @@ Thumbs.db
 # Vercel
 .vercel
 /generated/prisma
+/src/generated/prisma
 # AI / IDE generated skill folders
 .agents/
 .claude/
