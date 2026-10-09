@@ -60,26 +60,26 @@ export const PredictabilityPage: React.FC = () => {
       {/* Page Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 bg-graphite-900 border border-scientific-border p-4 rounded-lg">
         <div className="flex items-center space-x-3">
-          <div className="p-2 rounded bg-predictability/15 border border-predictability/40 text-predictability-light">
+          <div className="p-2 rounded-md bg-purple-500/10 border border-purple-500/30 text-purple-300">
             <Compass className="w-5 h-5" />
           </div>
           <div>
-            <div className="flex items-center space-x-2">
-              <h2 className="font-mono text-base font-bold text-slate-100">
-                PREDICTABILITY & RISK RESEARCH INSTRUMENTS
+            <div className="flex items-center space-x-2.5">
+              <h2 className="font-heading text-base font-bold text-slate-100">
+                Predictability & Risk Research Instruments
               </h2>
               <SimulatedDataBadge size="sm" />
             </div>
-            <p className="text-xs text-scientific-muted font-mono">
-              Temporal bifurcation dynamics & earliest defensible warning verification for {selectedCell.id}
+            <p className="text-xs text-slate-400 font-sans mt-0.5">
+              Temporal bifurcation dynamics & earliest defensible warning verification for <span className="font-mono text-slate-300">{selectedCell.id}</span>
             </p>
           </div>
         </div>
 
-        <div className="flex items-center space-x-2 text-xs font-mono">
-          <span className="text-scientific-muted">CRITICAL THRESHOLD:</span>
-          <span className="px-2 py-0.5 rounded bg-predictability/20 text-predictability-light font-bold border border-predictability/40">
-            70% PREDICTABILITY (PERSISTENT)
+        <div className="flex items-center space-x-2 text-xs font-sans">
+          <span className="text-slate-400 font-medium">Critical Threshold:</span>
+          <span className="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-300 font-semibold border border-purple-500/30 font-mono text-xs">
+            70% Predictability
           </span>
         </div>
       </div>
@@ -104,30 +104,30 @@ export const PredictabilityPage: React.FC = () => {
         <div className="bg-graphite-900 border border-scientific-border rounded-lg p-5 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-2 border-b border-scientific-border mb-3">
-              <span className="text-xs font-mono font-bold text-red-400 tracking-wider">
-                INSTRUMENT 01: EVENT RISK
+              <span className="text-xs font-heading font-semibold text-rose-400 tracking-wide uppercase">
+                Instrument 01: Event Risk
               </span>
-              <span className="text-[10px] font-mono text-scientific-muted">
-                CURRENT LIKELIHOOD METRIC
+              <span className="text-[10px] font-sans font-medium text-slate-400 uppercase tracking-wide">
+                Likelihood Metric
               </span>
             </div>
 
             <RiskGauge
               value={selectedPoint.eventRisk}
-              label={`EVENT RISK AT ${selectedPoint.label}`}
+              label={`Event Risk at ${selectedPoint.label}`}
               size="lg"
             />
 
-            <div className="mt-4 p-3 rounded bg-graphite-950 border border-scientific-border text-xs font-mono">
-              <strong className="text-slate-200 block mb-1">SCIENTIFIC DEFINITION:</strong>
-              <p className="text-scientific-muted leading-relaxed">
-                <span className="text-red-400 font-semibold">Event Risk</span> measures how likely severe convection is to manifest within the designated spatial domain, derived from thermodynamic fuel (CAPE) and trigger energetics.
+            <div className="mt-4 p-3 rounded-md bg-graphite-950 border border-scientific-border text-xs font-sans">
+              <strong className="text-slate-200 block mb-1 font-heading text-xs uppercase tracking-wide">Scientific Definition:</strong>
+              <p className="text-slate-300 leading-relaxed">
+                <span className="text-rose-400 font-medium">Event Risk</span> measures how likely severe convection is to manifest within the designated spatial domain, derived from thermodynamic fuel (CAPE) and trigger energetics.
               </p>
             </div>
           </div>
 
-          <div className="mt-4 pt-3 border-t border-scientific-border/80 text-[11px] font-mono text-slate-400">
-            Current Risk at {selectedPoint.label}: <strong className="text-slate-100">{selectedPoint.eventRisk}%</strong> (Estimated severe potential)
+          <div className="mt-4 pt-3 border-t border-scientific-border/80 text-xs font-sans text-slate-400">
+            Current Risk at {selectedPoint.label}: <strong className="text-slate-100 font-mono font-semibold">{selectedPoint.eventRisk}%</strong> <span className="text-slate-400">(estimated severe potential)</span>
           </div>
         </div>
 
@@ -135,35 +135,35 @@ export const PredictabilityPage: React.FC = () => {
         <div className="bg-graphite-900 border border-scientific-border rounded-lg p-5 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-2 border-b border-scientific-border mb-3">
-              <span className="text-xs font-mono font-bold text-predictability-light tracking-wider">
-                INSTRUMENT 02: PREDICTABILITY
+              <span className="text-xs font-heading font-semibold text-purple-300 tracking-wide uppercase">
+                Instrument 02: Predictability
               </span>
-              <span className="text-[10px] font-mono text-predictability">
-                STATE SEPARATION CONFIDENCE
+              <span className="text-[10px] font-sans font-medium text-purple-300 uppercase tracking-wide">
+                State Separation Confidence
               </span>
             </div>
 
             <PredictabilityGauge
               value={selectedPoint.predictability}
-              label={`PREDICTABILITY AT ${selectedPoint.label}`}
+              label={`Predictability at ${selectedPoint.label}`}
               threshold={70}
               size="lg"
             />
 
-            <div className="mt-4 p-3 rounded bg-graphite-950 border border-scientific-border text-xs font-mono">
-              <strong className="text-slate-200 block mb-1">SCIENTIFIC DEFINITION:</strong>
-              <p className="text-scientific-muted leading-relaxed">
-                <span className="text-predictability-light font-semibold">Predictability</span> measures how confidently current atmospheric observation and model phase space allow this event to be distinguished from plausible alternative futures (such as dry failure or harmless ordinary showers).
+            <div className="mt-4 p-3 rounded-md bg-graphite-950 border border-scientific-border text-xs font-sans">
+              <strong className="text-slate-200 block mb-1 font-heading text-xs uppercase tracking-wide">Scientific Definition:</strong>
+              <p className="text-slate-300 leading-relaxed">
+                <span className="text-purple-300 font-medium">Predictability</span> measures how confidently current atmospheric observation and model phase space allow this event to be distinguished from plausible alternative futures (such as dry failure or harmless ordinary showers).
               </p>
             </div>
           </div>
 
-          <div className="mt-4 pt-3 border-t border-scientific-border/80 text-[11px] font-mono text-slate-400">
-            Current Predictability at {selectedPoint.label}: <strong className="text-predictability-light">{selectedPoint.predictability}%</strong>
+          <div className="mt-4 pt-3 border-t border-scientific-border/80 text-xs font-sans text-slate-400">
+            Current Predictability at {selectedPoint.label}: <strong className="text-purple-300 font-mono font-semibold">{selectedPoint.predictability}%</strong>
             {selectedPoint.predictability >= 70 ? (
-              <span className="text-emerald-400 ml-2 font-semibold">✓ Defensible Warning Capable</span>
+              <span className="text-emerald-400 ml-2 font-medium">✓ Defensible Warning Capable</span>
             ) : (
-              <span className="text-amber-400 ml-2 font-semibold">⚠ Atmosphere Remains Ambiguous</span>
+              <span className="text-amber-400 ml-2 font-medium">⚠ Atmosphere Remains Ambiguous</span>
             )}
           </div>
         </div>
@@ -191,26 +191,26 @@ export const PredictabilityPage: React.FC = () => {
       <div className="bg-graphite-900 border border-scientific-border rounded-lg p-5">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-scientific-border pb-3 mb-4">
           <div>
-            <div className="flex items-center space-x-2">
-              <TrendingUp className="w-5 h-5 text-observation" />
-              <h3 className="font-mono text-sm font-bold text-slate-100">
-                DISCRETE SAMPLING STAGES (TIMELINE AUDIT)
+            <div className="flex items-center space-x-2.5">
+              <TrendingUp className="w-5 h-5 text-sky-400" />
+              <h3 className="font-heading text-sm font-bold text-slate-100">
+                Discrete Sampling Stages (Timeline Audit)
               </h3>
               <SimulatedDataBadge size="sm" />
             </div>
-            <p className="text-xs text-scientific-muted font-mono">
+            <p className="text-xs text-slate-400 font-sans mt-0.5">
               Temporal trace illustrating when information separation crosses the defensible threshold.
             </p>
           </div>
 
           {/* Markers Legend */}
-          <div className="flex items-center space-x-4 text-xs font-mono">
+          <div className="flex items-center space-x-4 text-xs font-sans">
             <div className="flex items-center space-x-1.5">
-              <span className="w-3 h-0.5 bg-red-400" />
+              <span className="w-3 h-0.5 bg-rose-400" />
               <span className="text-slate-300">Event Risk %</span>
             </div>
             <div className="flex items-center space-x-1.5">
-              <span className="w-3 h-0.5 bg-predictability" />
+              <span className="w-3 h-0.5 bg-purple-400" />
               <span className="text-slate-300">Predictability %</span>
             </div>
             <div className="flex items-center space-x-1.5">
@@ -224,22 +224,22 @@ export const PredictabilityPage: React.FC = () => {
         <div className="h-72 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={chartData} margin={{ top: 20, right: 30, left: 10, bottom: 10 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#222f40" />
-              <XAxis dataKey="label" stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 11, fontFamily: 'monospace' }} />
-              <YAxis stroke="#64748b" domain={[0, 100]} tick={{ fill: '#94a3b8', fontSize: 11, fontFamily: 'monospace' }} unit="%" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#172235" />
+              <XAxis dataKey="label" stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 11, fontFamily: 'IBM Plex Mono' }} />
+              <YAxis stroke="#64748b" domain={[0, 100]} tick={{ fill: '#94a3b8', fontSize: 11, fontFamily: 'IBM Plex Mono' }} unit="%" />
               <Tooltip
                 content={({ active, payload }) => {
                   if (active && payload && payload.length) {
                     const data = payload[0].payload;
                     return (
-                      <div className="bg-graphite-950 border border-scientific-border p-3 rounded shadow-xl text-xs font-mono space-y-1">
-                        <p className="font-bold text-slate-100">{data.label} (T{data.minute}m)</p>
-                        <p className="text-red-400">Event Risk: {data.eventRisk}%</p>
-                        <p className="text-predictability-light">Predictability: {data.predictability}%</p>
-                        <p className="text-slate-400 text-[10px]">Information Entropy: {data.entropy} bits</p>
+                      <div className="bg-graphite-950 border border-scientific-border p-3 rounded-md shadow-xl text-xs font-sans space-y-1">
+                        <p className="font-heading font-semibold text-slate-100">{data.label} (T{data.minute}m)</p>
+                        <p className="text-rose-400 font-mono">Event Risk: {data.eventRisk}%</p>
+                        <p className="text-purple-300 font-mono">Predictability: {data.predictability}%</p>
+                        <p className="text-slate-400 text-[11px] font-mono">Information Entropy: {data.entropy} bits</p>
                         {data.isEarliestDefensible && (
-                          <p className="text-emerald-400 font-bold text-[10px] mt-1 pt-1 border-t border-scientific-border">
-                            ★ EARLIEST DEFENSIBLE WARNING
+                          <p className="text-emerald-400 font-medium text-[11px] mt-1 pt-1 border-t border-scientific-border">
+                            ★ Earliest Defensible Warning
                           </p>
                         )}
                       </div>
@@ -249,19 +249,19 @@ export const PredictabilityPage: React.FC = () => {
                 }}
               />
               <ReferenceLine y={70} stroke="#f59e0b" strokeDasharray="4 4" label={{ value: '70% PREDICTABILITY THRESHOLD', fill: '#f59e0b', fontSize: 10, position: 'insideBottomRight' }} />
-              <Area type="monotone" dataKey="predictability" fill="#a855f7" fillOpacity={0.15} stroke="#a855f7" strokeWidth={3} />
-              <Line type="monotone" dataKey="eventRisk" stroke="#ef4444" strokeWidth={2} strokeDasharray="5 5" />
+              <Area type="monotone" dataKey="predictability" fill="#a855f7" fillOpacity={0.12} stroke="#c084fc" strokeWidth={2.5} />
+              <Line type="monotone" dataKey="eventRisk" stroke="#f43f5e" strokeWidth={2} strokeDasharray="5 5" />
             </ComposedChart>
           </ResponsiveContainer>
         </div>
 
         {/* Interactive Timeline Stepper Cards */}
         <div className="mt-6">
-          <div className="flex items-center justify-between text-xs font-mono text-scientific-muted mb-2">
-            <span className="font-semibold uppercase text-slate-300">
-              DISCRETE SAMPLING STAGES (CLICK TO INSPECT)
+          <div className="flex items-center justify-between text-xs font-sans text-slate-400 mb-2">
+            <span className="font-heading font-semibold uppercase tracking-wide text-slate-300">
+              Discrete Sampling Stages (Click to Inspect)
             </span>
-            <span>DATA SOURCE: DEMO PREDICTABILITY TIMELINE</span>
+            <span className="text-slate-400 text-[11px]">Demo Predictability Timeline</span>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
@@ -271,36 +271,36 @@ export const PredictabilityPage: React.FC = () => {
                 <button
                   key={step.label}
                   onClick={() => setSelectedPointIndex(idx)}
-                  className={`p-3 rounded border text-left transition-all font-mono ${
+                  className={`p-3 rounded-md border text-left transition-colors font-sans ${
                     isSelected
-                      ? 'bg-scientific-panel border-predictability ring-1 ring-predictability/50 shadow-md'
-                      : 'bg-graphite-950 border-scientific-border hover:border-slate-600'
+                      ? 'bg-purple-500/10 border-purple-500/50 shadow-xs'
+                      : 'bg-graphite-950 border-scientific-border hover:border-slate-700'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-bold text-slate-200">{step.label}</span>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-xs font-mono font-semibold text-slate-200">{step.label}</span>
                     {step.isEarliestDefensibleWarning && (
-                      <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-bold">
-                        ★ HORIZON
+                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-medium border border-emerald-500/30">
+                        ★ Horizon
                       </span>
                     )}
                   </div>
                   <div className="text-[11px] space-y-0.5">
                     <div className="flex justify-between">
-                      <span className="text-scientific-muted">Risk:</span>
-                      <span className="text-red-400 font-semibold">{step.eventRisk}%</span>
+                      <span className="text-slate-400">Risk:</span>
+                      <span className="text-rose-400 font-mono font-semibold">{step.eventRisk}%</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-scientific-muted">Pred:</span>
-                      <span className="text-predictability font-semibold">{step.predictability}%</span>
+                      <span className="text-slate-400">Pred:</span>
+                      <span className="text-purple-300 font-mono font-semibold">{step.predictability}%</span>
                     </div>
                   </div>
                   {step.isThresholdCrossed ? (
-                    <span className="text-[9px] text-emerald-400 font-semibold block mt-1.5">
+                    <span className="text-[10px] text-emerald-400 font-medium block mt-1.5">
                       ✓ Crossed
                     </span>
                   ) : (
-                    <span className="text-[9px] text-scientific-muted block mt-1.5">
+                    <span className="text-[10px] text-slate-400 block mt-1.5">
                       Ambiguous
                     </span>
                   )}
@@ -311,29 +311,29 @@ export const PredictabilityPage: React.FC = () => {
         </div>
 
         {/* Selected Stage Detail Callout */}
-        <div className="mt-4 p-4 rounded-lg bg-graphite-950 border border-scientific-border/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-xs">
+        <div className="mt-4 p-4 rounded-lg bg-graphite-950 border border-scientific-border/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-sans">
           <div className="space-y-1">
             <div className="flex items-center space-x-2">
-              <span className="font-bold text-slate-100">
-                STAGE {selectedPoint.label} ANALYSIS NOTE:
+              <span className="font-heading font-semibold text-slate-100">
+                Stage {selectedPoint.label} Analysis Note:
               </span>
               {selectedPoint.isEarliestDefensibleWarning && (
-                <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold text-[10px] border border-emerald-500/40">
-                  EARLIEST DEFENSIBLE WARNING WINDOW
+                <span className="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-300 font-medium text-[10px] border border-emerald-500/30">
+                  Earliest Defensible Warning Window
                 </span>
               )}
             </div>
-            <p className="text-slate-300">{selectedPoint.atmosphereStateNote}</p>
+            <p className="text-slate-300 leading-relaxed">{selectedPoint.atmosphereStateNote}</p>
           </div>
 
-          <div className="shrink-0 flex items-center space-x-3 text-[11px] text-scientific-muted">
+          <div className="shrink-0 flex items-center space-x-3.5 text-xs text-slate-400">
             <div>
-              <span>ENTROPY: </span>
-              <strong className="text-slate-200">{selectedPoint.entropyBits} bits</strong>
+              <span>Entropy: </span>
+              <strong className="text-slate-200 font-mono">{selectedPoint.entropyBits} bits</strong>
             </div>
             <div>
-              <span>DIVERGENCE: </span>
-              <strong className="text-slate-200">{selectedPoint.divergenceIndex}</strong>
+              <span>Divergence: </span>
+              <strong className="text-slate-200 font-mono">{selectedPoint.divergenceIndex}</strong>
             </div>
           </div>
         </div>

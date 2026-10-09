@@ -35,33 +35,33 @@ export const OverviewPage: React.FC = () => {
       {/* Top Banner / System Status */}
       <div className="flex flex-wrap items-center justify-between gap-4 bg-graphite-900 border border-scientific-border p-4 rounded-lg">
         <div className="flex items-center space-x-3">
-          <div className="p-2 rounded bg-observation/10 border border-observation/30 text-observation">
+          <div className="p-2 rounded-md bg-sky-500/10 border border-sky-500/20 text-sky-400">
             <Activity className="w-5 h-5" />
           </div>
           <div>
-            <div className="flex items-center space-x-2">
-              <h2 className="font-mono text-base font-bold text-slate-100">
-                REGIONAL ATMOSPHERIC MONITORING
+            <div className="flex items-center space-x-2.5">
+              <h2 className="font-heading text-base font-bold text-slate-100">
+                Regional Atmospheric Monitoring
               </h2>
               <SimulatedDataBadge size="sm" />
             </div>
-            <p className="text-xs text-scientific-muted font-mono mt-0.5">
-              Domain: Western Ghats Orographic Interface & Coastal Plain | 18.0°N–19.8°N, 72.5°E–74.5°E
+            <p className="text-xs text-slate-400 font-sans mt-0.5">
+              Domain: Western Ghats Orographic Interface & Coastal Plain · <span className="font-mono text-slate-300">18.0°N–19.8°N, 72.5°E–74.5°E</span>
             </p>
           </div>
         </div>
 
         {/* Quick Cell Selector Buttons */}
-        <div className="flex items-center space-x-2 font-mono text-xs">
-          <span className="text-scientific-muted text-[11px] hidden sm:inline">SELECT CELL:</span>
+        <div className="flex items-center space-x-2 text-xs">
+          <span className="text-slate-400 text-xs font-sans font-medium hidden sm:inline">Select Cell:</span>
           {cells.map((cell) => (
             <button
               key={cell.id}
               onClick={() => setSelectedCellId(cell.id)}
-              className={`px-3 py-1.5 rounded border transition-all ${
+              className={`px-3 py-1.5 rounded-md border font-mono text-xs transition-colors ${
                 selectedCell.id === cell.id
-                  ? 'bg-scientific-panel border-observation text-observation font-bold shadow'
-                  : 'bg-graphite-950 border-scientific-border text-scientific-muted hover:text-slate-200'
+                  ? 'bg-sky-500/15 border-sky-500/40 text-sky-300 font-semibold shadow-xs'
+                  : 'bg-graphite-950 border-scientific-border text-slate-400 hover:text-slate-200 hover:bg-graphite-850'
               }`}
             >
               {cell.id}
@@ -78,26 +78,26 @@ export const OverviewPage: React.FC = () => {
         <div className="xl:col-span-7 bg-graphite-900 border border-scientific-border rounded-lg p-4 flex flex-col justify-between">
           {/* Schematic Header */}
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-scientific-border pb-3 mb-3">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2.5">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-mono font-bold text-xs uppercase tracking-wider text-slate-200">
-                SIMULATED ATMOSPHERIC FIELD
+              <span className="font-heading font-semibold text-xs uppercase tracking-wider text-slate-200">
+                Simulated Atmospheric Field
               </span>
-              <span className="text-[10px] font-mono text-scientific-muted border border-scientific-border px-1.5 py-0.2 rounded bg-graphite-950">
-                RESOLUTION: 1.0 KM GRID
+              <span className="text-[10px] font-mono text-slate-400 border border-scientific-border px-2 py-0.5 rounded bg-graphite-950">
+                1.0 km grid
               </span>
             </div>
 
             {/* Layer Filter Buttons */}
-            <div className="flex items-center space-x-1 font-mono text-[11px] bg-graphite-950 p-1 rounded border border-scientific-border">
+            <div className="flex items-center space-x-1 font-sans text-xs bg-graphite-950 p-1 rounded-md border border-scientific-border">
               {(['composite', 'radar', 'moisture', 'cape'] as const).map((layer) => (
                 <button
                   key={layer}
                   onClick={() => setActiveOverlay(layer)}
-                  className={`px-2 py-0.5 rounded uppercase font-semibold transition-colors ${
+                  className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${
                     activeOverlay === layer
-                      ? 'bg-scientific-panel text-observation border border-scientific-border'
-                      : 'text-scientific-muted hover:text-slate-200'
+                      ? 'bg-sky-500/15 text-sky-300 border border-sky-500/30 font-semibold'
+                      : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
                   {layer}
@@ -252,15 +252,15 @@ export const OverviewPage: React.FC = () => {
             </svg>
 
             {/* Radar Legend in bottom left */}
-            <div className="absolute bottom-2.5 left-2.5 bg-graphite-900/90 border border-scientific-border px-2.5 py-1.5 rounded text-[10px] font-mono backdrop-blur-sm">
-              <span className="text-slate-400 block mb-1">REFLECTIVITY (dBZ)</span>
-              <div className="flex items-center space-x-1">
-                <span className="w-3 h-2 bg-blue-500 rounded-sm" title="20 dBZ" />
-                <span className="w-3 h-2 bg-emerald-500 rounded-sm" title="30 dBZ" />
-                <span className="w-3 h-2 bg-amber-400 rounded-sm" title="40 dBZ" />
-                <span className="w-3 h-2 bg-red-500 rounded-sm" title="50 dBZ" />
-                <span className="w-3 h-2 bg-purple-500 rounded-sm" title="60 dBZ" />
-                <span className="text-slate-300 ml-1.5 font-bold">20 → 65+</span>
+            <div className="absolute bottom-2.5 left-2.5 bg-graphite-900/90 border border-scientific-border px-3 py-1.5 rounded-md text-[11px] backdrop-blur-sm">
+              <span className="text-slate-400 block mb-1 font-sans text-[10px] font-medium tracking-wide">Reflectivity (dBZ)</span>
+              <div className="flex items-center space-x-1.5">
+                <span className="w-3 h-2 bg-blue-500 rounded-xs" title="20 dBZ" />
+                <span className="w-3 h-2 bg-emerald-500 rounded-xs" title="30 dBZ" />
+                <span className="w-3 h-2 bg-amber-400 rounded-xs" title="40 dBZ" />
+                <span className="w-3 h-2 bg-rose-500 rounded-xs" title="50 dBZ" />
+                <span className="w-3 h-2 bg-purple-500 rounded-xs" title="60 dBZ" />
+                <span className="text-slate-200 ml-1 font-mono text-[11px] font-medium">20 → 65+</span>
               </div>
             </div>
 
@@ -268,18 +268,18 @@ export const OverviewPage: React.FC = () => {
             <div className="absolute top-2.5 right-2.5 flex items-center space-x-2">
               <button
                 onClick={() => navigate('/app/digital-twin')}
-                className="px-2.5 py-1.5 bg-graphite-900/90 hover:bg-graphite-800 text-observation border border-observation/40 rounded text-xs font-mono flex items-center space-x-1.5 transition-colors shadow"
+                className="px-3 py-1.5 bg-graphite-900/90 hover:bg-graphite-850 text-sky-300 border border-sky-500/30 rounded-md text-xs font-sans font-medium flex items-center space-x-1.5 transition-colors shadow-xs"
               >
                 <Box className="w-3.5 h-3.5" />
-                <span>OPEN IN 3D TWIN</span>
+                <span>Open in 3D Twin</span>
               </button>
             </div>
           </div>
 
           {/* Schematic Footer Details */}
-          <div className="mt-3 flex flex-wrap items-center justify-between text-xs font-mono text-scientific-muted pt-2 border-t border-scientific-border/60">
-            <span>RADAR FEED: SIMULATED SYNTHETIC DOPPLER MOSAIC</span>
-            <span className="text-observation">ACTIVE TRACKING: {cells.length} CELLS IN DOMAIN</span>
+          <div className="mt-3 flex flex-wrap items-center justify-between text-xs font-sans text-slate-400 pt-2 border-t border-scientific-border/60">
+            <span>Synthetic Doppler Radar Mosaic</span>
+            <span className="text-slate-300 font-mono text-xs">Active tracking: {cells.length} cells in domain</span>
           </div>
         </div>
 
@@ -291,19 +291,19 @@ export const OverviewPage: React.FC = () => {
             {/* Header of analysis panel */}
             <div className="flex items-center justify-between border-b border-scientific-border pb-3 mb-4">
               <div>
-                <div className="flex items-center space-x-2">
-                  <span className="font-mono text-lg font-bold text-slate-100">
+                <div className="flex items-center space-x-2.5">
+                  <span className="font-heading text-lg font-bold text-slate-100">
                     {selectedCell.name}
                   </span>
                   <SimulatedDataBadge size="sm" />
                 </div>
-                <span className="text-xs text-scientific-muted font-mono">
+                <span className="text-xs text-slate-400 font-sans">
                   Region: {selectedCell.region}
                 </span>
               </div>
 
               {/* Status Badge */}
-              <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40">
+              <span className="text-xs font-sans font-medium px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-300 border border-amber-500/30">
                 {selectedCell.status}
               </span>
             </div>
@@ -313,114 +313,114 @@ export const OverviewPage: React.FC = () => {
               {/* Event Risk Gauge */}
               <RiskGauge
                 value={selectedCell.eventRisk}
-                label="EVENT RISK"
+                label="Event Risk"
                 showExplanation={true}
               />
 
               {/* Predictability Gauge */}
               <PredictabilityGauge
                 value={selectedCell.predictability}
-                label="PREDICTABILITY"
+                label="Predictability"
                 showExplanation={true}
               />
             </div>
 
             {/* Atmosphere Ambiguity Callout */}
-            <div className="bg-graphite-950 p-3.5 rounded border border-scientific-border/80 mb-4">
-              <div className="flex items-center space-x-1.5 text-xs font-mono font-bold text-amber-400 mb-1">
+            <div className="bg-graphite-950 p-3.5 rounded-md border border-scientific-border/80 mb-4">
+              <div className="flex items-center space-x-2 text-xs font-sans font-semibold text-amber-400 mb-1">
                 <AlertTriangle className="w-4 h-4 shrink-0" />
-                <span>DYNAMIC AMBIGUITY STATE:</span>
+                <span>Dynamic Ambiguity Assessment</span>
               </div>
-              <p className="text-xs font-mono text-slate-300 leading-relaxed">
+              <p className="text-xs font-sans text-slate-300 leading-relaxed italic">
                 "{selectedCell.ambiguityAssessment}"
               </p>
             </div>
 
             {/* ATMOSPHERIC DYNAMICS GRID (All marked simulated) */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs font-mono text-scientific-muted">
-                <span className="font-semibold uppercase text-slate-300">
-                  ATMOSPHERIC DYNAMICS PARAMETERS
+            <div className="space-y-2.5">
+              <div className="flex items-center justify-between text-xs font-sans">
+                <span className="font-heading font-semibold text-xs uppercase tracking-wide text-slate-300">
+                  Atmospheric Dynamics
                 </span>
-                <span className="text-[10px] text-amber-400">SIMULATED VALUES</span>
+                <span className="text-[11px] font-sans text-amber-400/90">Simulated values</span>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
-                <div className="bg-graphite-950 p-2.5 rounded border border-scientific-border/60">
-                  <span className="text-[10px] text-scientific-muted block">CAPE (J/kg)</span>
-                  <span className="text-slate-100 font-bold tabular-nums text-sm">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                <div className="bg-graphite-950 p-2.5 rounded-md border border-scientific-border/60">
+                  <span className="text-[11px] text-slate-400 font-sans block">CAPE (J/kg)</span>
+                  <span className="text-slate-100 font-semibold font-mono tabular-nums text-sm">
                     {selectedCell.cape}
                   </span>
-                  <span className="text-[9px] text-slate-500 block">simulated</span>
+                  <span className="text-[10px] text-slate-500 font-sans block">simulated</span>
                 </div>
 
-                <div className="bg-graphite-950 p-2.5 rounded border border-scientific-border/60">
-                  <span className="text-[10px] text-scientific-muted block">CIN (J/kg)</span>
-                  <span className="text-slate-100 font-bold tabular-nums text-sm">
+                <div className="bg-graphite-950 p-2.5 rounded-md border border-scientific-border/60">
+                  <span className="text-[11px] text-slate-400 font-sans block">CIN (J/kg)</span>
+                  <span className="text-slate-100 font-semibold font-mono tabular-nums text-sm">
                     {selectedCell.cin}
                   </span>
-                  <span className="text-[9px] text-slate-500 block">simulated</span>
+                  <span className="text-[10px] text-slate-500 font-sans block">simulated</span>
                 </div>
 
-                <div className="bg-graphite-950 p-2.5 rounded border border-scientific-border/60">
-                  <span className="text-[10px] text-scientific-muted block">RH 850hPa</span>
-                  <span className="text-slate-100 font-bold tabular-nums text-sm">
+                <div className="bg-graphite-950 p-2.5 rounded-md border border-scientific-border/60">
+                  <span className="text-[11px] text-slate-400 font-sans block">RH 850hPa</span>
+                  <span className="text-slate-100 font-semibold font-mono tabular-nums text-sm">
                     {selectedCell.relativeHumidity}%
                   </span>
-                  <span className="text-[9px] text-slate-500 block">simulated</span>
+                  <span className="text-[10px] text-slate-500 font-sans block">simulated</span>
                 </div>
 
-                <div className="bg-graphite-950 p-2.5 rounded border border-scientific-border/60">
-                  <span className="text-[10px] text-scientific-muted block">UPDRAFT</span>
-                  <span className="text-red-400 font-bold tabular-nums text-sm">
+                <div className="bg-graphite-950 p-2.5 rounded-md border border-scientific-border/60">
+                  <span className="text-[11px] text-slate-400 font-sans block">Updraft</span>
+                  <span className="text-rose-400 font-semibold font-mono tabular-nums text-sm">
                     {selectedCell.verticalVelocity} m/s
                   </span>
-                  <span className="text-[9px] text-slate-500 block">simulated</span>
+                  <span className="text-[10px] text-slate-500 font-sans block">simulated</span>
                 </div>
 
-                <div className="bg-graphite-950 p-2.5 rounded border border-scientific-border/60">
-                  <span className="text-[10px] text-scientific-muted block">0–6km SHEAR</span>
-                  <span className="text-slate-100 font-bold tabular-nums text-sm">
+                <div className="bg-graphite-950 p-2.5 rounded-md border border-scientific-border/60">
+                  <span className="text-[11px] text-slate-400 font-sans block">0–6km Shear</span>
+                  <span className="text-slate-100 font-semibold font-mono tabular-nums text-sm">
                     {selectedCell.windShear} m/s
                   </span>
-                  <span className="text-[9px] text-slate-500 block">simulated</span>
+                  <span className="text-[10px] text-slate-500 font-sans block">simulated</span>
                 </div>
 
-                <div className="bg-graphite-950 p-2.5 rounded border border-scientific-border/60">
-                  <span className="text-[10px] text-scientific-muted block">MOIST. CONV.</span>
-                  <span className="text-observation font-bold tabular-nums text-sm">
+                <div className="bg-graphite-950 p-2.5 rounded-md border border-scientific-border/60">
+                  <span className="text-[11px] text-slate-400 font-sans block">Moist. Conv.</span>
+                  <span className="text-sky-400 font-semibold font-mono tabular-nums text-sm">
                     {selectedCell.moistureConvergence} g/kg
                   </span>
-                  <span className="text-[9px] text-slate-500 block">simulated</span>
+                  <span className="text-[10px] text-slate-500 font-sans block">simulated</span>
                 </div>
 
-                <div className="bg-graphite-950 p-2.5 rounded border border-scientific-border/60">
-                  <span className="text-[10px] text-scientific-muted block">CLOUD COOLING</span>
-                  <span className="text-purple-400 font-bold tabular-nums text-sm">
+                <div className="bg-graphite-950 p-2.5 rounded-md border border-scientific-border/60">
+                  <span className="text-[11px] text-slate-400 font-sans block">Cloud Cooling</span>
+                  <span className="text-purple-300 font-semibold font-mono tabular-nums text-sm">
                     {selectedCell.cloudTopCooling} °C/15m
                   </span>
-                  <span className="text-[9px] text-slate-500 block">simulated</span>
+                  <span className="text-[10px] text-slate-500 font-sans block">simulated</span>
                 </div>
 
-                <div className="bg-graphite-950 p-2.5 rounded border border-scientific-border/60">
-                  <span className="text-[10px] text-scientific-muted block">LIGHTNING</span>
-                  <span className="text-amber-400 font-bold tabular-nums text-sm">
+                <div className="bg-graphite-950 p-2.5 rounded-md border border-scientific-border/60">
+                  <span className="text-[11px] text-slate-400 font-sans block">Lightning</span>
+                  <span className="text-amber-400 font-semibold font-mono tabular-nums text-sm">
                     {selectedCell.lightningActivity} fl/min
                   </span>
-                  <span className="text-[9px] text-slate-500 block">simulated</span>
+                  <span className="text-[10px] text-slate-500 font-sans block">simulated</span>
                 </div>
               </div>
             </div>
 
             {/* Candidate Precursor Signals */}
             <div className="mt-4 pt-3 border-t border-scientific-border">
-              <span className="text-[11px] font-mono text-slate-400 font-semibold block mb-1.5 uppercase">
-                CANDIDATE PRECURSOR SIGNALS IDENTIFIED
+              <span className="text-xs font-heading font-semibold text-slate-300 block mb-2 uppercase tracking-wide">
+                Candidate Precursor Signals
               </span>
-              <ul className="space-y-1 text-xs font-mono text-scientific-muted">
+              <ul className="space-y-1.5 text-xs font-sans text-slate-300">
                 {selectedCell.candidatePrecursorSignals.map((sig, idx) => (
                   <li key={idx} className="flex items-start space-x-2">
-                    <span className="text-observation font-bold">›</span>
+                    <span className="text-sky-400 font-bold">›</span>
                     <span className="text-slate-300">{sig}</span>
                   </li>
                 ))}
@@ -428,20 +428,20 @@ export const OverviewPage: React.FC = () => {
             </div>
 
             {/* Quick Action Navigation Buttons */}
-            <div className="mt-4 pt-3 border-t border-scientific-border flex items-center justify-between gap-2">
+            <div className="mt-4 pt-3 border-t border-scientific-border flex items-center justify-between gap-3">
               <button
                 onClick={() => navigate('/app/predictability')}
-                className="flex-1 py-2 bg-predictability/20 hover:bg-predictability/30 text-predictability-light border border-predictability/40 rounded font-mono text-xs font-semibold flex items-center justify-center space-x-1.5 transition-colors"
+                className="flex-1 py-2 bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 rounded-md font-sans text-xs font-medium flex items-center justify-center space-x-1.5 transition-colors"
               >
                 <Compass className="w-3.5 h-3.5" />
-                <span>PREDICTABILITY TIMELINE</span>
+                <span>Predictability Timeline</span>
               </button>
               <button
                 onClick={() => navigate('/app/digital-twin')}
-                className="flex-1 py-2 bg-graphite-950 hover:bg-graphite-800 text-slate-200 border border-scientific-border rounded font-mono text-xs font-semibold flex items-center justify-center space-x-1.5 transition-colors"
+                className="flex-1 py-2 bg-graphite-950 hover:bg-graphite-850 text-slate-200 border border-scientific-border rounded-md font-sans text-xs font-medium flex items-center justify-center space-x-1.5 transition-colors"
               >
-                <Box className="w-3.5 h-3.5 text-observation" />
-                <span>3D DIGITAL TWIN</span>
+                <Box className="w-3.5 h-3.5 text-sky-400" />
+                <span>3D Digital Twin</span>
               </button>
             </div>
           </div>

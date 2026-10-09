@@ -7,11 +7,12 @@ import {
   Activity,
   Box,
   Layers,
-  Cpu,
-  AlertTriangle,
   GitBranch,
   BookOpen,
-  ChevronDown
+  ArrowUpRight,
+  Radio,
+  Eye,
+  SlidersHorizontal
 } from 'lucide-react';
 import { HeroAtmosphericCanvas } from '../components/three/HeroAtmosphericCanvas';
 import { SimulatedDataBadge } from '../components/common/SimulatedDataBadge';
@@ -20,252 +21,270 @@ export const LandingPage: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-graphite-950 text-scientific-text font-sans selection:bg-predictability selection:text-white flex flex-col">
-      {/* Top minimal scientific bar */}
-      <header className="h-14 border-b border-scientific-border/80 px-6 flex items-center justify-between z-20 bg-graphite-950/80 backdrop-blur-sm">
+    <div className="min-h-screen bg-graphite-950 text-slate-100 font-sans selection:bg-observation/20 selection:text-white flex flex-col">
+      {/* Top clean research bar */}
+      <header className="h-16 border-b border-scientific-border/60 px-6 sm:px-10 flex items-center justify-between z-20 bg-graphite-950/80 backdrop-blur-md">
         <div className="flex items-center space-x-3">
-          <div className="w-7 h-7 rounded bg-graphite-900 border border-observation/40 flex items-center justify-center text-observation font-mono font-bold text-xs">
-            PЯ
+          <div className="w-8 h-8 rounded-md bg-graphite-900 border border-scientific-border flex items-center justify-center text-observation font-heading font-bold text-sm tracking-tight">
+            PR
           </div>
-          <div>
-            <span className="font-mono font-bold text-sm tracking-widest text-slate-100">
+          <div className="flex items-baseline space-x-2.5">
+            <span className="font-heading font-bold text-base tracking-tight text-white">
               PRAGYA
             </span>
-            <span className="text-[10px] font-mono text-scientific-muted ml-2">
-              ATMOSPHERIC RESEARCH PROTOTYPE
+            <span className="text-xs text-slate-400 font-normal hidden sm:inline">
+              Atmospheric Research Platform
             </span>
           </div>
         </div>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 sm:space-x-4">
           <SimulatedDataBadge size="sm" />
           <button
             onClick={() => navigate('/app/overview')}
-            className="px-3.5 py-1.5 bg-observation-dark hover:bg-observation text-graphite-950 font-mono font-bold text-xs rounded transition-all flex items-center space-x-1.5 shadow"
+            className="px-4 py-2 bg-observation-dark hover:bg-observation text-white hover:text-slate-950 font-sans font-medium text-xs rounded-md transition-all flex items-center space-x-1.5 shadow-sm"
           >
-            <span>ENTER COMMAND CENTRE</span>
+            <span>Enter Command Centre</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </header>
 
       {/* HERO SECTION WITH THREE.JS ATMOSPHERIC VISUAL */}
-      <section className="relative min-h-[92vh] flex flex-col justify-center px-6 lg:px-16 overflow-hidden">
+      <section className="relative min-h-[88vh] flex flex-col justify-center px-6 sm:px-12 lg:px-20 overflow-hidden">
         {/* Background 3D Atmospheric Volume Canvas */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 opacity-80">
           <HeroAtmosphericCanvas />
         </div>
 
+        {/* Subtle radial vignette gradient to ensure legibility */}
+        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-graphite-950/90 via-graphite-950/70 to-transparent pointer-events-none" />
+
         {/* Hero Content Overlay */}
-        <div className="relative z-10 max-w-4xl py-12">
-          {/* Status indicators */}
-          <div className="flex flex-wrap items-center gap-2 mb-6">
-            <span className="px-2.5 py-1 rounded bg-predictability/15 border border-predictability/40 text-predictability-light font-mono text-xs uppercase font-semibold flex items-center space-x-1.5">
-              <span className="w-2 h-2 rounded-full bg-predictability animate-pulse" />
-              <span>RESEARCH PROTOTYPE</span>
-            </span>
-            <SimulatedDataBadge size="md" />
-            <span className="px-2.5 py-1 rounded bg-graphite-900/80 border border-scientific-border text-scientific-muted font-mono text-xs">
-              MESOSCALE CONVECTIVE NOWCASTING (0–6H)
-            </span>
+        <div className="relative z-10 max-w-3xl py-16">
+          {/* Small understated research status */}
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-slate-700/60 bg-slate-900/60 text-xs text-slate-300 mb-8 backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0" />
+            <span>Research Prototype · Simulated Demonstration Data</span>
           </div>
 
-          {/* Hero Titles */}
-          <h1 className="font-mono text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4">
+          {/* Main Title & Subtitle */}
+          <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-4">
             PRAGYA
           </h1>
-          <p className="font-mono text-sm sm:text-base text-observation tracking-wider uppercase mb-6 font-semibold">
+
+          <p className="font-heading text-base sm:text-lg font-medium text-observation mb-6">
             Predictability & Rapid Atmospheric Genesis Intelligence Architecture
           </p>
 
-          <div className="border-l-2 border-predictability pl-5 mb-8">
-            <h2 className="text-2xl sm:text-3xl font-semibold text-slate-100 tracking-tight mb-3">
-              "Finding the moment extreme weather becomes predictable."
-            </h2>
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-              An experimental atmospheric intelligence platform for studying the predictability of rapidly developing severe convection.
-            </p>
-          </div>
+          <h2 className="font-heading text-2xl sm:text-3xl font-semibold text-slate-100 tracking-tight mb-4">
+            Finding the moment extreme weather becomes predictable.
+          </h2>
 
-          {/* Core Call to Actions */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mb-9">
+            An atmospheric research platform for studying when rapidly developing convective events first become reliably predictable.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center gap-3.5">
             <button
               onClick={() => navigate('/app/overview')}
-              className="px-6 py-3 bg-observation hover:bg-observation-light text-graphite-950 font-mono font-bold text-sm rounded shadow-lg transition-all flex items-center space-x-2"
+              className="px-6 py-3 bg-observation hover:bg-observation-light text-graphite-950 font-sans font-semibold text-sm rounded-md shadow-sm transition-all flex items-center space-x-2"
             >
-              <span>ENTER COMMAND CENTRE</span>
+              <span>Enter Command Centre</span>
               <ArrowRight className="w-4 h-4" />
             </button>
-            <button
-              onClick={() => navigate('/app/research')}
-              className="px-5 py-3 bg-graphite-900/90 hover:bg-graphite-800 text-slate-200 border border-scientific-border font-mono text-sm rounded transition-all flex items-center space-x-2"
-            >
-              <BookOpen className="w-4 h-4 text-predictability" />
-              <span>VIEW RESEARCH CONCEPT</span>
-            </button>
+
             <button
               onClick={() => navigate('/app/digital-twin')}
-              className="px-5 py-3 bg-graphite-900/90 hover:bg-graphite-800 text-slate-200 border border-predictability/30 font-mono text-sm rounded transition-all flex items-center space-x-2"
+              className="px-5 py-3 bg-graphite-900/80 hover:bg-graphite-800 text-slate-200 border border-scientific-border hover:border-slate-500 font-sans font-medium text-sm rounded-md transition-all flex items-center space-x-2 backdrop-blur-sm"
             >
               <Box className="w-4 h-4 text-observation" />
-              <span>EXPLORE 3D DIGITAL TWIN</span>
+              <span>Explore 3D Digital Twin</span>
             </button>
-          </div>
 
-          {/* Scientific Paradigm Banner: Risk vs Predictability */}
-          <div className="mt-12 bg-graphite-900/90 border border-scientific-border p-5 rounded-lg max-w-2xl backdrop-blur-sm">
-            <div className="flex items-center space-x-2 text-xs font-mono font-bold text-amber-400 mb-2">
-              <AlertTriangle className="w-4 h-4" />
-              <span>THE CORE SCIENTIFIC PRINCIPLE OF PRAGYA</span>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono text-slate-300">
-              <div className="bg-graphite-950/80 p-3 rounded border border-scientific-border/80">
-                <span className="text-red-400 font-bold block mb-1">1. EVENT RISK</span>
-                <p className="text-scientific-muted leading-tight">
-                  How likely severe convection is to form in the domain.
-                </p>
-              </div>
-              <div className="bg-graphite-950/80 p-3 rounded border border-scientific-border/80">
-                <span className="text-predictability font-bold block mb-1">2. PREDICTABILITY</span>
-                <p className="text-scientific-muted leading-tight">
-                  How confidently the atmosphere currently allows that event to be distinguished from plausible alternative futures.
-                </p>
-              </div>
-            </div>
-            <p className="mt-2.5 text-[11px] font-mono text-slate-400 italic">
-              These two dimensions are mathematically distinct and must NEVER be treated as the same value.
-            </p>
+            <button
+              onClick={() => navigate('/app/research')}
+              className="px-4 py-3 text-slate-400 hover:text-white font-sans font-medium text-sm transition-colors flex items-center space-x-1.5"
+            >
+              <span>Research Concept</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
       </section>
 
-      {/* 3-STAGE MISSION ARCHITECTURE SECTION: OBSERVE -> UNDERSTAND -> COMMUNICATE */}
-      <section className="py-16 px-6 lg:px-16 border-t border-scientific-border bg-graphite-950">
-        <div className="max-w-6xl mx-auto space-y-8">
-          <div className="text-center max-w-3xl mx-auto space-y-2">
-            <span className="text-xs font-mono text-observation uppercase tracking-wider font-semibold">
-              SCIENTIFIC CONTINUUM
+      {/* RESEARCH CONCEPT SECTION: EDITORIAL / SCIENTIFIC LAYOUT */}
+      <section className="py-20 px-6 sm:px-12 lg:px-20 border-t border-scientific-border bg-graphite-900/60">
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-2xl mb-12">
+            <span className="text-xs font-heading font-semibold uppercase tracking-wider text-observation">
+              Core Paradigm
             </span>
-            <h3 className="text-2xl sm:text-3xl font-bold font-mono text-slate-100">
-              From Raw Atmospheric Physics to Protective Action
+            <h3 className="text-2xl sm:text-3xl font-heading font-bold text-white mt-1.5">
+              Three Orthogonal Dimensions of Atmospheric Certainty
             </h3>
-            <p className="text-sm font-mono text-scientific-muted leading-relaxed">
-              PRAGYA bridges raw thermodynamic observations, mathematical predictability horizons, and operational public safety through three tightly coupled stages.
+            <p className="text-sm text-slate-400 leading-relaxed mt-2.5">
+              In operational nowcasting, danger and predictability are frequently conflated. PRAGYA evaluates physical favorability, state constraint, and sensor sufficiency independently.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-            {/* Stage 1 */}
-            <div className="bg-graphite-900 border border-scientific-border p-6 rounded-lg space-y-4 relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-observation" />
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-scientific-border border border-scientific-border rounded-lg bg-graphite-950/60 overflow-hidden">
+            {/* Dimension 1: Event Risk */}
+            <div className="p-7 sm:p-8 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-observation tracking-wider">STAGE 01</span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-observation/10 text-observation border border-observation/30">
-                  ASSIMILATE
+                <span className="text-xs font-mono text-danger font-medium uppercase tracking-wider">
+                  Dimension 01
                 </span>
+                <span className="w-2 h-2 rounded-full bg-danger" />
               </div>
-              <h4 className="text-base font-bold text-slate-100">OBSERVE</h4>
-              <p className="text-scientific-muted leading-relaxed text-[11px]">
-                Multi-sensor ingestion across IMD Doppler radar volumes, INSAT-3DR satellite radiometers, AWS surface networks, and numerical reanalysis with rigorous telemetry latency modeling.
+              <h4 className="text-lg font-heading font-bold text-white">
+                Event Risk
+              </h4>
+              <p className="text-sm text-slate-300 font-medium">
+                How likely is the event to develop?
               </p>
-              <ul className="space-y-1.5 text-[11px] text-slate-300 pt-2 border-t border-scientific-border/60">
-                <li className="flex items-center space-x-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-observation" />
-                  <span>Sub-hourly rapid convective updates</span>
-                </li>
-                <li className="flex items-center space-x-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-observation" />
-                  <span>Strict zero-future-leakage time gating</span>
-                </li>
-                <li className="flex items-center space-x-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-observation" />
-                  <span>Sensor health &amp; gap quantification</span>
-                </li>
-              </ul>
+              <p className="text-xs text-slate-400 leading-relaxed pt-2 border-t border-scientific-border/60">
+                Thermodynamic instability, CAPE, CIN erosion, and low-level boundary layer moisture convergence evaluating environmental potential.
+              </p>
             </div>
 
-            {/* Stage 2 */}
-            <div className="bg-graphite-900 border border-scientific-border p-6 rounded-lg space-y-4 relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-predictability" />
+            {/* Dimension 2: Predictability */}
+            <div className="p-7 sm:p-8 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-predictability-light tracking-wider">STAGE 02</span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-predictability/10 text-predictability-light border border-predictability/30">
-                  REASON
+                <span className="text-xs font-mono text-predictability-light font-medium uppercase tracking-wider">
+                  Dimension 02
                 </span>
+                <span className="w-2 h-2 rounded-full bg-predictability" />
               </div>
-              <h4 className="text-base font-bold text-slate-100">UNDERSTAND</h4>
-              <p className="text-scientific-muted leading-relaxed text-[11px]">
-                Predictability Horizon tracking, Future Divergence indexing, 3D volumetric analysis, and precursor signal convergence to isolate the exact moment ambiguity collapses.
+              <h4 className="text-lg font-heading font-bold text-white">
+                Predictability
+              </h4>
+              <p className="text-sm text-slate-300 font-medium">
+                How confidently can the event be distinguished from alternative futures?
               </p>
-              <ul className="space-y-1.5 text-[11px] text-slate-300 pt-2 border-t border-scientific-border/60">
-                <li className="flex items-center space-x-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-predictability" />
-                  <span>Independent Risk vs Predictability</span>
-                </li>
-                <li className="flex items-center space-x-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-predictability" />
-                  <span>20-member physics ensemble futures</span>
-                </li>
-                <li className="flex items-center space-x-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-predictability" />
-                  <span>Near-miss atmospheric bifurcation</span>
-                </li>
-              </ul>
+              <p className="text-xs text-slate-400 leading-relaxed pt-2 border-t border-scientific-border/60">
+                Phase-space divergence and entropy analysis tracking when ensemble trajectories collapse to an inevitable outcome.
+              </p>
             </div>
 
-            {/* Stage 3 */}
-            <div className="bg-graphite-900 border border-scientific-border p-6 rounded-lg space-y-4 relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-amber-400" />
+            {/* Dimension 3: Observation Confidence */}
+            <div className="p-7 sm:p-8 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-amber-400 tracking-wider">STAGE 03</span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30">
-                  TRANSLATE
+                <span className="text-xs font-mono text-observation font-medium uppercase tracking-wider">
+                  Dimension 03
                 </span>
+                <span className="w-2 h-2 rounded-full bg-observation" />
               </div>
-              <h4 className="text-base font-bold text-slate-100">COMMUNICATE</h4>
-              <p className="text-scientific-muted leading-relaxed text-[11px]">
-                Empowering authorities with structured decision support windows, while delivering calm, actionable, non-alarmist public guidance in English, Hindi, and Marathi.
+              <h4 className="text-lg font-heading font-bold text-white">
+                Observation Confidence
+              </h4>
+              <p className="text-sm text-slate-300 font-medium">
+                How sufficient and reliable are the available observations?
               </p>
-              <ul className="space-y-1.5 text-[11px] text-slate-300 pt-2 border-t border-scientific-border/60">
-                <li className="flex items-center space-x-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                  <span>Multi-agency decision timeline</span>
-                </li>
-                <li className="flex items-center space-x-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                  <span>Trilingual citizen safety cards</span>
-                </li>
-                <li className="flex items-center space-x-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                  <span>Clear alignment with official IMD alerts</span>
-                </li>
-              </ul>
+              <p className="text-xs text-slate-400 leading-relaxed pt-2 border-t border-scientific-border/60">
+                Data quality indexing, sensor health, and detection of radar terrain beam-blockage or satellite scan latency.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESS SECTION: CONNECTED PIPELINE DIAGRAM */}
+      <section className="py-20 px-6 sm:px-12 lg:px-20 border-t border-scientific-border bg-graphite-950">
+        <div className="max-w-6xl mx-auto space-y-12">
+          <div className="max-w-2xl">
+            <span className="text-xs font-heading font-semibold uppercase tracking-wider text-observation">
+              Architecture Workflow
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-heading font-bold text-white mt-1.5">
+              From atmospheric observations to actionable intelligence
+            </h3>
+            <p className="text-sm text-slate-400 leading-relaxed mt-2.5">
+              Bridging raw physical instrumentation and decision support through three interconnected scientific stages.
+            </p>
+          </div>
+
+          {/* Connected Process Flow */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            {/* Step 1 */}
+            <div className="border border-scientific-border rounded-lg p-6 bg-graphite-900/40 relative space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-heading font-bold text-observation tracking-wider">
+                  01 — Observe
+                </span>
+                <Radio className="w-4 h-4 text-observation/80" />
+              </div>
+              <h4 className="text-base font-heading font-semibold text-white">
+                Multi-source atmospheric observations
+              </h4>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Assimilation across Doppler weather radar volumes, rapid-scan satellite infrared radiometry, and surface AWS networks with strict telemetry latency gating.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="border border-scientific-border rounded-lg p-6 bg-graphite-900/40 relative space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-heading font-bold text-predictability-light tracking-wider">
+                  02 — Understand
+                </span>
+                <Compass className="w-4 h-4 text-predictability-light/80" />
+              </div>
+              <h4 className="text-base font-heading font-semibold text-white">
+                Precursors, atmospheric fingerprints and predictability analysis
+              </h4>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Thermodynamic feature extraction, 20-member physics ensemble clustering, and bifurcation detection to isolate the exact horizon where ambiguity collapses.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="border border-scientific-border rounded-lg p-6 bg-graphite-900/40 relative space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-heading font-bold text-watch tracking-wider">
+                  03 — Support
+                </span>
+                <Shield className="w-4 h-4 text-watch/80" />
+              </div>
+              <h4 className="text-base font-heading font-semibold text-white">
+                Translate scientific intelligence into decision support
+              </h4>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Empowering authorities with transparent timing windows, multi-agency timelines, and delivering calm, actionable public guidance in English, Hindi, and Marathi.
+              </p>
             </div>
           </div>
 
-          {/* Persona Direct Entry Links */}
-          <div className="p-4 bg-graphite-900/60 border border-scientific-border rounded-lg flex flex-wrap items-center justify-between gap-4">
-            <span className="text-xs font-mono text-slate-300">
-              Direct Access to System Personas:
-            </span>
+          {/* Persona Direct Entry Bar */}
+          <div className="p-4 sm:p-5 border border-scientific-border rounded-lg bg-graphite-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span className="text-xs font-heading font-semibold text-slate-200 block">
+                Target User Personas
+              </span>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Role-specific workspaces powered by the same scientific backend.
+              </p>
+            </div>
+
             <div className="flex flex-wrap items-center gap-2">
               <button
                 onClick={() => navigate('/app/overview')}
-                className="px-3 py-1.5 rounded bg-graphite-800 hover:bg-graphite-700 text-slate-200 border border-scientific-border font-mono text-xs flex items-center space-x-1.5"
+                className="px-3.5 py-1.5 rounded-md bg-graphite-800 hover:bg-graphite-700 text-slate-200 border border-scientific-border font-sans text-xs font-medium transition-colors"
               >
-                <span>🔬 Scientific Research Workstation</span>
+                Research Workstation
               </button>
               <button
                 onClick={() => navigate('/app/authority')}
-                className="px-3 py-1.5 rounded bg-graphite-800 hover:bg-graphite-700 text-amber-300 border border-amber-500/30 font-mono text-xs flex items-center space-x-1.5"
+                className="px-3.5 py-1.5 rounded-md bg-graphite-800 hover:bg-graphite-700 text-amber-300 border border-amber-500/30 font-sans text-xs font-medium transition-colors"
               >
-                <span>🏛️ Authority Command Centre</span>
+                Authority Command
               </button>
               <button
                 onClick={() => navigate('/app/citizen')}
-                className="px-3 py-1.5 rounded bg-graphite-800 hover:bg-graphite-700 text-emerald-300 border border-emerald-500/30 font-mono text-xs flex items-center space-x-1.5"
+                className="px-3.5 py-1.5 rounded-md bg-graphite-800 hover:bg-graphite-700 text-emerald-300 border border-emerald-500/30 font-sans text-xs font-medium transition-colors"
               >
-                <span>🛡️ Public Citizen Safety</span>
+                Citizen Safety
               </button>
             </div>
           </div>
@@ -273,63 +292,75 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* KEY RESEARCH CAPABILITIES GRID */}
-      <section className="py-16 px-6 lg:px-16 border-t border-scientific-border bg-graphite-900/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-10">
-            <span className="text-xs font-mono text-observation uppercase tracking-wider font-semibold">
-              SCIENTIFIC WORKSTATION CAPABILITIES
+      <section className="py-20 px-6 sm:px-12 lg:px-20 border-t border-scientific-border bg-graphite-900/40">
+        <div className="max-w-6xl mx-auto space-y-10">
+          <div>
+            <span className="text-xs font-heading font-semibold uppercase tracking-wider text-observation">
+              Interactive Instruments
             </span>
-            <h3 className="text-2xl font-bold font-mono text-slate-100 mt-1">
-              Integrated Convective Prediction Architecture
+            <h3 className="text-2xl sm:text-3xl font-heading font-bold text-white mt-1.5">
+              Workstation Research Capabilities
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Box 1 */}
             <div
               onClick={() => navigate('/app/digital-twin')}
-              className="bg-graphite-900 border border-scientific-border p-5 rounded-lg hover:border-observation/60 transition-all cursor-pointer group"
+              className="border border-scientific-border rounded-lg p-6 bg-graphite-950/70 hover:border-slate-500 transition-all cursor-pointer group"
             >
-              <Box className="w-6 h-6 text-observation mb-3 group-hover:scale-105 transition-transform" />
-              <h4 className="text-sm font-bold text-slate-100 mb-2">3D Atmospheric Digital Twin</h4>
-              <p className="text-scientific-muted leading-relaxed mb-4">
-                Interactive 0–12 km atmospheric volume visualizing terrain, vertical grids, updrafts, downdrafts, moisture flux, and hail-growth zones across -3h to +6h timelines.
+              <div className="w-9 h-9 rounded-md bg-observation/10 border border-observation/25 flex items-center justify-center text-observation mb-4 group-hover:scale-105 transition-transform">
+                <Box className="w-5 h-5" />
+              </div>
+              <h4 className="text-base font-heading font-semibold text-white mb-2">
+                3D Atmospheric Digital Twin
+              </h4>
+              <p className="text-xs text-slate-400 leading-relaxed mb-4">
+                Interactive 0–12 km atmospheric volume visualizing orographic terrain, vertical grids, updrafts, downdrafts, moisture flux particles, and hail-growth zones across -3h to +6h timelines.
               </p>
-              <span className="text-observation inline-flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
+              <span className="text-xs text-observation font-medium inline-flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
                 <span>Open Digital Twin</span>
-                <ArrowRight className="w-3 h-3" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </div>
 
             {/* Box 2 */}
             <div
               onClick={() => navigate('/app/predictability')}
-              className="bg-graphite-900 border border-scientific-border p-5 rounded-lg hover:border-predictability/60 transition-all cursor-pointer group"
+              className="border border-scientific-border rounded-lg p-6 bg-graphite-950/70 hover:border-slate-500 transition-all cursor-pointer group"
             >
-              <Compass className="w-6 h-6 text-predictability mb-3 group-hover:scale-105 transition-transform" />
-              <h4 className="text-sm font-bold text-slate-100 mb-2">Predictability Horizon Analysis</h4>
-              <p className="text-scientific-muted leading-relaxed mb-4">
-                Quantitative tracking of phase space divergence and information entropy to establish the earliest defensible warning window before event onset.
+              <div className="w-9 h-9 rounded-md bg-predictability/10 border border-predictability/25 flex items-center justify-center text-predictability-light mb-4 group-hover:scale-105 transition-transform">
+                <Compass className="w-5 h-5" />
+              </div>
+              <h4 className="text-base font-heading font-semibold text-white mb-2">
+                Predictability Horizon Analysis
+              </h4>
+              <p className="text-xs text-slate-400 leading-relaxed mb-4">
+                Quantitative tracking of phase-space divergence and information entropy to establish the earliest defensible warning window before convective release.
               </p>
-              <span className="text-predictability-light inline-flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
+              <span className="text-xs text-predictability-light font-medium inline-flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
                 <span>View Predictability Instruments</span>
-                <ArrowRight className="w-3 h-3" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </div>
 
             {/* Box 3 */}
             <div
               onClick={() => navigate('/app/laboratory')}
-              className="bg-graphite-900 border border-scientific-border p-5 rounded-lg hover:border-amber-400/60 transition-all cursor-pointer group"
+              className="border border-scientific-border rounded-lg p-6 bg-graphite-950/70 hover:border-slate-500 transition-all cursor-pointer group"
             >
-              <GitBranch className="w-6 h-6 text-amber-400 mb-3 group-hover:scale-105 transition-transform" />
-              <h4 className="text-sm font-bold text-slate-100 mb-2">Atmospheric Difference Finder</h4>
-              <p className="text-scientific-muted leading-relaxed mb-4">
-                Synchronized counterfactual comparison between events where severe convection developed vs similar environments where convection failed.
+              <div className="w-9 h-9 rounded-md bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-300 mb-4 group-hover:scale-105 transition-transform">
+                <GitBranch className="w-5 h-5" />
+              </div>
+              <h4 className="text-base font-heading font-semibold text-white mb-2">
+                Atmospheric Difference Finder
+              </h4>
+              <p className="text-xs text-slate-400 leading-relaxed mb-4">
+                Synchronized counterfactual comparison between events where severe convection developed versus similar environments where convection failed due to dry-slot intrusion.
               </p>
-              <span className="text-amber-400 inline-flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
+              <span className="text-xs text-amber-300 font-medium inline-flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
                 <span>Enter Storm Laboratory</span>
-                <ArrowRight className="w-3 h-3" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </div>
           </div>
@@ -337,13 +368,13 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* SCIENTIFIC INTEGRITY FOOTER */}
-      <footer className="mt-auto border-t border-scientific-border bg-graphite-950 px-6 py-8 text-xs font-mono text-scientific-muted">
+      <footer className="mt-auto border-t border-scientific-border bg-graphite-950 px-6 sm:px-12 lg:px-20 py-8 text-xs text-slate-400">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-3">
-            <span className="font-bold text-slate-300">PRAGYA</span>
-            <span>|</span>
-            <span>RESEARCH PROTOTYPE</span>
-            <span>|</span>
+            <span className="font-heading font-bold text-slate-200">PRAGYA</span>
+            <span className="text-slate-600">|</span>
+            <span>Research Prototype</span>
+            <span className="text-slate-600">|</span>
             <SimulatedDataBadge size="sm" />
           </div>
 
@@ -355,3 +386,4 @@ export const LandingPage: React.FC = () => {
     </div>
   );
 };
+

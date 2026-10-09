@@ -144,42 +144,42 @@ export const AuthorityCommandPage: React.FC = () => {
   const currentAdvisory = advisoryMessages[previewLang];
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto font-mono text-xs">
+    <div className="space-y-6 max-w-7xl mx-auto font-sans text-xs">
       {/* Top Authority Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 bg-graphite-900 border border-scientific-border p-4 rounded-lg">
         <div className="flex items-center space-x-3">
-          <div className="p-2.5 rounded bg-amber-500/15 border border-amber-500/40 text-amber-400">
+          <div className="p-2.5 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-400">
             <ShieldAlert className="w-5 h-5" />
           </div>
           <div>
-            <div className="flex items-center space-x-2">
-              <h2 className="text-base font-bold text-slate-100 tracking-wider">
-                PRAGYA AUTHORITY COMMAND CENTRE
+            <div className="flex items-center space-x-2.5">
+              <h2 className="text-base font-heading font-bold text-slate-100">
+                Authority Command Centre
               </h2>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-purple-950/80 text-purple-300 border border-purple-500/40 font-bold">
-                SIMULATED DEMONSTRATION CASE
+              <span className="text-[11px] font-sans font-medium px-2 py-0.5 rounded-md bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                Demonstration Case
               </span>
             </div>
-            <p className="text-[11px] text-scientific-muted">
+            <p className="text-xs text-slate-400 font-sans mt-0.5">
               Decision-support translation layer synthesizing predictability horizons into actionable agency situational awareness.
             </p>
           </div>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2.5">
           <button
             onClick={() => navigate('/app/digital-twin')}
-            className="px-3 py-1.5 rounded bg-graphite-950 hover:bg-graphite-800 text-slate-200 border border-scientific-border flex items-center space-x-1.5 text-[11px] transition-colors"
+            className="px-3 py-1.5 rounded-md bg-graphite-950 hover:bg-graphite-850 text-slate-200 border border-scientific-border flex items-center space-x-1.5 text-xs font-medium transition-colors"
           >
             <span>3D Command Twin</span>
-            <ExternalLink className="w-3 h-3 text-cyan-400" />
+            <ExternalLink className="w-3.5 h-3.5 text-sky-400" />
           </button>
           <button
             onClick={() => setPreviewModalOpen(true)}
-            className="px-3.5 py-1.5 rounded bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold flex items-center space-x-1.5 text-[11px] transition-all shadow"
+            className="px-3.5 py-1.5 rounded-md bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-200 font-medium flex items-center space-x-1.5 text-xs transition-colors shadow-xs"
           >
-            <Bell className="w-3.5 h-3.5" />
-            <span>PREVIEW CITIZEN MESSAGE</span>
+            <Bell className="w-3.5 h-3.5 text-amber-300" />
+            <span>Preview Citizen Message</span>
           </button>
         </div>
       </div>
@@ -187,82 +187,82 @@ export const AuthorityCommandPage: React.FC = () => {
       {/* Six Key Questions Overview Card */}
       <div className="bg-graphite-900 border border-scientific-border rounded-lg p-5 space-y-4">
         <div className="flex items-center justify-between border-b border-scientific-border pb-3">
-          <span className="text-xs font-bold text-slate-100 uppercase tracking-wider flex items-center space-x-2">
-            <Activity className="w-4 h-4 text-cyan-400" />
-            <span>EXECUTIVE ATMOSPHERIC SITUATIONAL REPORT</span>
+          <span className="text-xs font-heading font-semibold text-slate-200 uppercase tracking-wide flex items-center space-x-2">
+            <Activity className="w-4 h-4 text-sky-400" />
+            <span>Executive Atmospheric Situational Report</span>
           </span>
-          <span className="text-[10px] text-scientific-muted">
-            Target Domain: Dhaula Kuan Research Corridor
+          <span className="text-xs font-sans text-slate-400">
+            Target Domain: <span className="text-slate-300 font-medium">Dhaula Kuan Research Corridor</span>
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {/* Q1: WHAT */}
-          <div className="p-3.5 rounded bg-graphite-950 border border-scientific-border space-y-1">
-            <span className="text-[10px] text-scientific-muted uppercase block font-bold">1. WHAT IS DEVELOPING?</span>
-            <h4 className="font-bold text-slate-100 text-xs text-amber-300">
+          <div className="p-3.5 rounded-md bg-graphite-950 border border-scientific-border space-y-1.5">
+            <span className="text-[11px] font-heading font-semibold text-slate-400 uppercase tracking-wide block">1. What is developing?</span>
+            <h4 className="font-heading font-semibold text-slate-100 text-xs text-amber-300">
               Severe Localized Downburst & Micro-Genesis
             </h4>
-            <p className="text-[10px] text-slate-400 leading-relaxed">
+            <p className="text-xs font-sans text-slate-300 leading-relaxed">
               Reflectivity surging &gt;52 dBZ with violent updraft pulses (&gt;14 m/s). Precipitable water exceeds 62 mm.
             </p>
           </div>
 
           {/* Q2: WHERE */}
-          <div className="p-3.5 rounded bg-graphite-950 border border-scientific-border space-y-1">
-            <span className="text-[10px] text-scientific-muted uppercase block font-bold">2. WHERE COULD IT MATTER?</span>
-            <h4 className="font-bold text-slate-100 text-xs text-cyan-300">
+          <div className="p-3.5 rounded-md bg-graphite-950 border border-scientific-border space-y-1.5">
+            <span className="text-[11px] font-heading font-semibold text-slate-400 uppercase tracking-wide block">2. Where could it matter?</span>
+            <h4 className="font-heading font-semibold text-slate-100 text-xs text-sky-300">
               Dhaula Kuan Underpasses & South-West NCT
             </h4>
-            <p className="text-[10px] text-slate-400 leading-relaxed">
+            <p className="text-xs font-sans text-slate-300 leading-relaxed">
               Vulnerable drainage bottleneck along Ring Road / Vande Mataram Marg elevation depression.
             </p>
           </div>
 
           {/* Q3: WHEN */}
-          <div className="p-3.5 rounded bg-graphite-950 border border-scientific-border space-y-1">
-            <span className="text-[10px] text-scientific-muted uppercase block font-bold">3. WHEN COULD IT MATTER?</span>
-            <h4 className="font-bold text-slate-100 text-xs text-emerald-300">
+          <div className="p-3.5 rounded-md bg-graphite-950 border border-scientific-border space-y-1.5">
+            <span className="text-[11px] font-heading font-semibold text-slate-400 uppercase tracking-wide block">3. When could it matter?</span>
+            <h4 className="font-heading font-semibold text-slate-100 text-xs text-emerald-300">
               Impact Window: 17:15 – 18:00 IST (T+15m to T+60m)
             </h4>
-            <p className="text-[10px] text-slate-400 leading-relaxed">
+            <p className="text-xs font-sans text-slate-300 leading-relaxed">
               Earliest core rainfall onset projected within 20–35 minutes based on radar reflectivity growth.
             </p>
           </div>
 
           {/* Q4: HOW PREDICTABLE */}
-          <div className="p-3.5 rounded bg-graphite-950 border border-scientific-border space-y-1">
-            <span className="text-[10px] text-scientific-muted uppercase block font-bold">4. HOW PREDICTABLE IS IT?</span>
+          <div className="p-3.5 rounded-md bg-graphite-950 border border-scientific-border space-y-1.5">
+            <span className="text-[11px] font-heading font-semibold text-slate-400 uppercase tracking-wide block">4. How predictable is it?</span>
             <div className="flex items-baseline space-x-2">
-              <span className="text-sm font-bold text-observation">{predictability}%</span>
-              <span className="text-[10px] text-emerald-400 font-bold">
-                {horizonCrossed ? 'HORIZON CROSSED (35m Lead)' : 'BELOW HORIZON'}
+              <span className="text-base font-semibold font-mono text-purple-300">{predictability}%</span>
+              <span className="text-[11px] font-sans font-medium text-emerald-400">
+                {horizonCrossed ? 'Horizon Crossed (35m Lead)' : 'Below Horizon'}
               </span>
             </div>
-            <p className="text-[10px] text-slate-400 leading-relaxed">
+            <p className="text-xs font-sans text-slate-300 leading-relaxed">
               Ensemble divergence has dropped to 0.24. 18 of 20 members converge on severe rainfall.
             </p>
           </div>
 
           {/* Q5: HOW CONFIDENT */}
-          <div className="p-3.5 rounded bg-graphite-950 border border-scientific-border space-y-1">
-            <span className="text-[10px] text-scientific-muted uppercase block font-bold">5. HOW CONFIDENT ARE OBSERVATIONS?</span>
+          <div className="p-3.5 rounded-md bg-graphite-950 border border-scientific-border space-y-1.5">
+            <span className="text-[11px] font-heading font-semibold text-slate-400 uppercase tracking-wide block">5. How confident are observations?</span>
             <div className="flex items-baseline space-x-2">
-              <span className="text-sm font-bold text-slate-100">{observationConfidence}%</span>
-              <span className="text-[10px] text-slate-400 font-bold">HIGH OBSERVATION HEALTH</span>
+              <span className="text-base font-semibold font-mono text-slate-100">{observationConfidence}%</span>
+              <span className="text-[11px] font-sans font-medium text-slate-300">High Observation Health</span>
             </div>
-            <p className="text-[10px] text-slate-400 leading-relaxed">
+            <p className="text-xs font-sans text-slate-300 leading-relaxed">
               Dual-polarization Doppler radar and surface AWS reporting on scheduled cadence.
             </p>
           </div>
 
           {/* Q6: WHAT IS MISSING */}
-          <div className="p-3.5 rounded bg-graphite-950 border border-scientific-border space-y-1">
-            <span className="text-[10px] text-scientific-muted uppercase block font-bold">6. WHAT IS MISSING?</span>
-            <h4 className="font-bold text-slate-100 text-xs text-rose-300">
+          <div className="p-3.5 rounded-md bg-graphite-950 border border-scientific-border space-y-1.5">
+            <span className="text-[11px] font-heading font-semibold text-slate-400 uppercase tracking-wide block">6. What is missing?</span>
+            <h4 className="font-heading font-semibold text-slate-100 text-xs text-rose-300">
               Low-Level Microwave Sounding Profile
             </h4>
-            <p className="text-[10px] text-slate-400 leading-relaxed">
+            <p className="text-xs font-sans text-slate-300 leading-relaxed">
               Boundary layer moisture sounding is ~45 min stale; surface AWS moisture convergence used as proxy.
             </p>
           </div>
@@ -272,12 +272,12 @@ export const AuthorityCommandPage: React.FC = () => {
       {/* Decision Timeline Bar */}
       <div className="bg-graphite-900 border border-scientific-border rounded-lg p-4 space-y-3">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-bold text-slate-200 uppercase flex items-center space-x-2">
-            <Clock className="w-3.5 h-3.5 text-observation" />
-            <span>DECISION TIMELINE NAVIGATION (MINUTES TO EVENT ONSET)</span>
+          <span className="text-xs font-heading font-semibold text-slate-200 uppercase tracking-wide flex items-center space-x-2">
+            <Clock className="w-3.5 h-3.5 text-sky-400" />
+            <span>Decision Timeline Navigation (Minutes to Event Onset)</span>
           </span>
-          <span className="text-[10px] text-scientific-muted">
-            Current Replay Selection: T{activeTimelineOffset >= 0 ? `+${activeTimelineOffset}` : activeTimelineOffset}m
+          <span className="text-xs font-sans text-slate-400">
+            Current Replay: <strong className="font-mono text-slate-200 font-semibold">T{activeTimelineOffset >= 0 ? `+${activeTimelineOffset}` : activeTimelineOffset}m</strong>
           </span>
         </div>
 
@@ -288,14 +288,14 @@ export const AuthorityCommandPage: React.FC = () => {
               <button
                 key={t}
                 onClick={() => setActiveTimelineOffset(t)}
-                className={`p-2.5 rounded-lg border text-center transition-all ${
+                className={`p-2.5 rounded-md border text-center transition-colors ${
                   isSelected
-                    ? 'bg-scientific-panel border-observation ring-1 ring-observation shadow text-slate-100 font-bold'
-                    : 'bg-graphite-950 border-scientific-border hover:border-slate-600 text-slate-400'
+                    ? 'bg-sky-500/15 border-sky-500/40 text-sky-200 font-semibold shadow-xs'
+                    : 'bg-graphite-950 border-scientific-border hover:border-slate-700 text-slate-400 hover:text-slate-200'
                 }`}
               >
-                <div className="text-xs font-bold">{t === 0 ? 'ONSET (T0)' : `T${t > 0 ? `+${t}` : t}m`}</div>
-                <div className="text-[9px] text-scientific-muted mt-0.5 truncate">
+                <div className="text-xs font-mono font-semibold">{t === 0 ? 'Onset (T0)' : `T${t > 0 ? `+${t}` : t}m`}</div>
+                <div className="text-[11px] font-sans text-slate-400 mt-0.5 truncate">
                   {t === -180 ? 'Equilibrium' : t === -60 ? 'Precursors' : t === -30 ? 'Horizon Locked' : t === 0 ? 'Cloudburst' : 'Dissipation'}
                 </div>
               </button>
@@ -319,35 +319,35 @@ export const AuthorityCommandPage: React.FC = () => {
           />
 
           {/* Atmospheric Story Panel */}
-          <div className="bg-graphite-900 border border-scientific-border rounded-lg p-4 space-y-2">
-            <span className="text-xs font-bold text-slate-100 uppercase tracking-wider flex items-center space-x-2">
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-              <span>THE ATMOSPHERIC STORY</span>
+          <div className="bg-graphite-900 border border-scientific-border rounded-lg p-4 space-y-2.5">
+            <span className="text-xs font-heading font-semibold text-slate-200 uppercase tracking-wide flex items-center space-x-2">
+              <Sparkles className="w-3.5 h-3.5 text-sky-400" />
+              <span>The Atmospheric Story</span>
             </span>
-            <p className="text-xs text-slate-300 leading-relaxed bg-graphite-950 p-3 rounded border border-scientific-border/80">
+            <p className="text-xs font-sans text-slate-300 leading-relaxed bg-graphite-950 p-3.5 rounded-md border border-scientific-border/80 italic">
               "{generateAtmosphericStory()}"
             </p>
           </div>
 
           {/* What Changed in the Last 30 Minutes? */}
           <div className="bg-graphite-900 border border-scientific-border rounded-lg p-4 space-y-3">
-            <span className="text-xs font-bold text-slate-100 uppercase tracking-wider flex items-center space-x-2">
+            <span className="text-xs font-heading font-semibold text-slate-200 uppercase tracking-wide flex items-center space-x-2">
               <TrendingUp className="w-3.5 h-3.5 text-amber-400" />
-              <span>WHAT CHANGED IN THE LAST 30 MINUTES?</span>
+              <span>What Changed in the Last 30 Minutes?</span>
             </span>
 
-            <div className="grid grid-cols-3 gap-2.5 text-[11px]">
-              <div className="p-2.5 rounded bg-graphite-950 border border-scientific-border">
-                <span className="text-[10px] text-scientific-muted block">RADAR ECHO</span>
-                <span className="font-bold text-rose-400 block text-xs">↑ +18 dBZ (surging)</span>
+            <div className="grid grid-cols-3 gap-2.5 text-xs">
+              <div className="p-2.5 rounded-md bg-graphite-950 border border-scientific-border">
+                <span className="text-[11px] font-sans text-slate-400 block">Radar Echo</span>
+                <span className="font-mono font-semibold text-rose-400 block text-xs mt-0.5">↑ +18 dBZ <span className="font-sans text-[10px] text-slate-400">(surging)</span></span>
               </div>
-              <div className="p-2.5 rounded bg-graphite-950 border border-scientific-border">
-                <span className="text-[10px] text-scientific-muted block">PRECIPITABLE WATER</span>
-                <span className="font-bold text-amber-400 block text-xs">↑ +6.2 mm (accumulating)</span>
+              <div className="p-2.5 rounded-md bg-graphite-950 border border-scientific-border">
+                <span className="text-[11px] font-sans text-slate-400 block">Precipitable Water</span>
+                <span className="font-mono font-semibold text-amber-400 block text-xs mt-0.5">↑ +6.2 mm <span className="font-sans text-[10px] text-slate-400">(accumulating)</span></span>
               </div>
-              <div className="p-2.5 rounded bg-graphite-950 border border-scientific-border">
-                <span className="text-[10px] text-scientific-muted block">FUTURE DIVERGENCE</span>
-                <span className="font-bold text-emerald-400 block text-xs">↓ -0.42 (converging)</span>
+              <div className="p-2.5 rounded-md bg-graphite-950 border border-scientific-border">
+                <span className="text-[11px] font-sans text-slate-400 block">Future Divergence</span>
+                <span className="font-mono font-semibold text-emerald-400 block text-xs mt-0.5">↓ -0.42 <span className="font-sans text-[10px] text-slate-400">(converging)</span></span>
               </div>
             </div>
           </div>
@@ -356,34 +356,34 @@ export const AuthorityCommandPage: React.FC = () => {
         {/* Right Column: Explainability, Uncertainty & Decision Support */}
         <div className="lg:col-span-5 space-y-5">
           {/* Why PRAGYA is Concerned vs What Limits Confidence */}
-          <div className="bg-graphite-900 border border-scientific-border rounded-lg p-4 space-y-3">
+          <div className="bg-graphite-900 border border-scientific-border rounded-lg p-4 space-y-3.5">
             <div className="space-y-2">
-              <span className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center space-x-1.5">
+              <span className="text-xs font-heading font-semibold text-amber-400 uppercase tracking-wide flex items-center space-x-1.5">
                 <AlertTriangle className="w-3.5 h-3.5" />
-                <span>WHY IS PRAGYA CONCERNED?</span>
+                <span>Why is PRAGYA Concerned?</span>
               </span>
-              <ul className="space-y-1.5 text-[11px] text-slate-300">
+              <ul className="space-y-1.5 text-xs font-sans text-slate-300">
                 <li className="flex items-start space-x-2">
                   <span className="text-amber-400 font-bold">•</span>
-                  <span><strong>Moisture Saturation:</strong> Boundary layer mixing ratio reached 19.2 g/kg.</span>
+                  <span><strong className="text-slate-200">Moisture Saturation:</strong> Boundary layer mixing ratio reached 19.2 g/kg.</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-amber-400 font-bold">•</span>
-                  <span><strong>Thermodynamic Instability:</strong> CAPE exceeds 3,400 J/kg with minimal CIN (-4 J/kg).</span>
+                  <span><strong className="text-slate-200">Thermodynamic Instability:</strong> CAPE exceeds 3,400 J/kg with minimal CIN (-4 J/kg).</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-amber-400 font-bold">•</span>
-                  <span><strong>Ensemble Consensus:</strong> 90% of model members predict rapid downburst onset.</span>
+                  <span><strong className="text-slate-200">Ensemble Consensus:</strong> 90% of model members predict rapid downburst onset.</span>
                 </li>
               </ul>
             </div>
 
             <div className="pt-3 border-t border-scientific-border space-y-2">
-              <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center space-x-1.5">
+              <span className="text-xs font-heading font-semibold text-sky-400 uppercase tracking-wide flex items-center space-x-1.5">
                 <ShieldAlert className="w-3.5 h-3.5" />
-                <span>WHAT LIMITS CONFIDENCE?</span>
+                <span>What Limits Confidence?</span>
               </span>
-              <ul className="space-y-1 text-[10px] text-slate-400">
+              <ul className="space-y-1 text-xs font-sans text-slate-400">
                 <li>• Radiosonde sounding interval is 12-hourly; micro-layer capping inferred from AWS.</li>
                 <li>• Orographic ridge interaction can cause micro-deflection not captured at 1km grid.</li>
               </ul>
@@ -392,79 +392,79 @@ export const AuthorityCommandPage: React.FC = () => {
 
           {/* Three Representative Futures (Simplified Multiverse for Authorities) */}
           <div className="bg-graphite-900 border border-scientific-border rounded-lg p-4 space-y-3">
-            <span className="text-xs font-bold text-slate-100 uppercase tracking-wider flex items-center space-x-2">
-              <Compass className="w-3.5 h-3.5 text-observation" />
-              <span>REPRESENTATIVE ATMOSPHERIC FUTURES</span>
+            <span className="text-xs font-heading font-semibold text-slate-200 uppercase tracking-wide flex items-center space-x-2">
+              <Compass className="w-3.5 h-3.5 text-sky-400" />
+              <span>Representative Atmospheric Futures</span>
             </span>
 
             <div className="space-y-2">
-              <div className="p-2.5 rounded bg-graphite-950 border border-emerald-500/30 flex items-center justify-between">
+              <div className="p-2.5 rounded-md bg-graphite-950 border border-emerald-500/30 flex items-center justify-between">
                 <div>
-                  <span className="font-bold text-emerald-400 text-xs block">LOW IMPACT (15% prob)</span>
-                  <span className="text-[10px] text-slate-400">Cell shears north; rain stays &lt;25 mm/hr</span>
+                  <span className="font-heading font-semibold text-emerald-400 text-xs block">Low Impact (15% prob)</span>
+                  <span className="text-xs font-sans text-slate-400">Cell shears north; rain stays &lt;25 mm/hr</span>
                 </div>
-                <span className="text-[10px] text-emerald-300 font-bold">Dissipation</span>
+                <span className="text-xs font-sans text-emerald-300 font-medium">Dissipation</span>
               </div>
 
-              <div className="p-2.5 rounded bg-graphite-950 border border-amber-500/50 flex items-center justify-between">
+              <div className="p-2.5 rounded-md bg-graphite-950 border border-amber-500/40 flex items-center justify-between">
                 <div>
-                  <span className="font-bold text-amber-400 text-xs block">CENTRAL SCENARIO (65% prob)</span>
-                  <span className="text-[10px] text-slate-400">Torrential rain core 70–90 mm/hr over Dhaula Kuan</span>
+                  <span className="font-heading font-semibold text-amber-400 text-xs block">Central Scenario (65% prob)</span>
+                  <span className="text-xs font-sans text-slate-400">Torrential rain core 70–90 mm/hr over Dhaula Kuan</span>
                 </div>
-                <span className="text-[10px] text-amber-300 font-bold">Cloudburst</span>
+                <span className="text-xs font-sans text-amber-300 font-medium">Cloudburst</span>
               </div>
 
-              <div className="p-2.5 rounded bg-graphite-950 border border-rose-500/40 flex items-center justify-between">
+              <div className="p-2.5 rounded-md bg-graphite-950 border border-rose-500/40 flex items-center justify-between">
                 <div>
-                  <span className="font-bold text-rose-400 text-xs block">HIGH IMPACT (20% prob)</span>
-                  <span className="text-[10px] text-slate-400">Severe squall with hail accretion &gt;110 mm/hr</span>
+                  <span className="font-heading font-semibold text-rose-400 text-xs block">High Impact (20% prob)</span>
+                  <span className="text-xs font-sans text-slate-400">Severe squall with hail accretion &gt;110 mm/hr</span>
                 </div>
-                <span className="text-[10px] text-rose-300 font-bold">Supercell</span>
+                <span className="text-xs font-sans text-rose-300 font-medium">Supercell</span>
               </div>
             </div>
           </div>
 
           {/* Decision Support (Not Automated Orders) */}
-          <div className="bg-graphite-900 border border-scientific-border rounded-lg p-4 space-y-2">
-            <span className="text-xs font-bold text-slate-100 uppercase tracking-wider block">
-              DECISION SUPPORT PROTOCOL (RECOMMENDED AGENCY CONSIDERATIONS)
+          <div className="bg-graphite-900 border border-scientific-border rounded-lg p-4 space-y-2.5">
+            <span className="text-xs font-heading font-semibold text-slate-200 uppercase tracking-wide block">
+              Decision Support Protocol (Recommended Considerations)
             </span>
-            <ul className="space-y-1.5 text-[11px] text-slate-300">
+            <ul className="space-y-1.5 text-xs font-sans text-slate-300">
               <li className="flex items-center space-x-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-observation shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-sky-400 shrink-0" />
                 <span>Verify pump readiness at Dhaula Kuan & Moti Bagh underpasses.</span>
               </li>
               <li className="flex items-center space-x-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-observation shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-sky-400 shrink-0" />
                 <span>Increase Doppler radar volumetric sweep cadence to 5 minutes.</span>
               </li>
               <li className="flex items-center space-x-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-observation shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-sky-400 shrink-0" />
                 <span>Review agency protocol for localized urban waterlogging.</span>
               </li>
             </ul>
-            <span className="text-[9px] text-scientific-muted block pt-1 border-t border-scientific-border/40">
+            <span className="text-[11px] font-sans text-slate-400 block pt-1 border-t border-scientific-border/40">
               PRAGYA assists command decisions; operational escalation follows official agency hierarchy.
             </span>
           </div>
 
           {/* What Data Would Help Most Now? (Information Value Experiment Integration) */}
           <div className="bg-graphite-900 border border-scientific-border rounded-lg p-4 space-y-2">
-            <span className="text-xs font-bold text-cyan-300 uppercase tracking-wider block">
-              EXPERIMENTAL SENSOR PRIORITY (WHAT DATA WOULD HELP MOST?)
+            <span className="text-xs font-heading font-semibold text-sky-300 uppercase tracking-wide block">
+              Sensor Priority (What Data Would Help Most?)
             </span>
-            <div className="space-y-1.5 text-[11px]">
-              <div className="flex items-center justify-between p-2 rounded bg-graphite-950 border border-scientific-border">
+            <div className="space-y-1.5 text-xs font-sans">
+              <div className="flex items-center justify-between p-2 rounded-md bg-graphite-950 border border-scientific-border">
                 <span className="text-slate-300">1. Doppler Radar Volumetric Core</span>
-                <span className="text-observation font-bold">+28% Confidence</span>
+                <span className="text-sky-400 font-mono font-semibold">+28% Confidence</span>
               </div>
-              <div className="flex items-center justify-between p-2 rounded bg-graphite-950 border border-scientific-border">
+              <div className="flex items-center justify-between p-2 rounded-md bg-graphite-950 border border-scientific-border">
                 <span className="text-slate-300">2. Valley X-Band Micro-Radar Node</span>
-                <span className="text-cyan-400 font-bold">+18% Confidence</span>
+                <span className="text-sky-400 font-mono font-semibold">+18% Confidence</span>
               </div>
-              <div className="flex items-center justify-between p-2 rounded bg-graphite-950 border border-scientific-border">
+              <div className="flex items-center justify-between p-2 rounded-md bg-graphite-950 border border-scientific-border">
                 <span className="text-slate-300">3. High-Rate 5-min Satellite Rapid Scan</span>
-                <span className="text-slate-400 font-bold">+12% Confidence</span>
+                <span className="text-slate-400 font-mono font-semibold">+12% Confidence</span>
               </div>
             </div>
           </div>
@@ -474,40 +474,40 @@ export const AuthorityCommandPage: React.FC = () => {
       {/* Trilingual Communication Preview Modal */}
       {previewModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 backdrop-blur-sm">
-          <div className="bg-graphite-950 border-2 border-amber-500 rounded-xl max-w-lg w-full p-5 space-y-4 shadow-2xl">
+          <div className="bg-graphite-950 border border-amber-500/40 rounded-xl max-w-lg w-full p-5 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-scientific-border pb-3">
               <div className="flex items-center space-x-2">
                 <Bell className="w-4 h-4 text-amber-400" />
-                <span className="font-bold text-xs text-slate-100 uppercase">
-                  CITIZEN ADVISORY PREVIEW (DEMO ONLY)
+                <span className="font-heading font-semibold text-xs text-slate-100 uppercase tracking-wide">
+                  Citizen Advisory Preview (Demo Only)
                 </span>
               </div>
-              <div className="flex items-center space-x-1">
+              <div className="flex items-center space-x-1 font-sans">
                 {(['en', 'hi', 'mr'] as Lang[]).map((l) => (
                   <button
                     key={l}
                     onClick={() => setPreviewLang(l)}
-                    className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                      previewLang === l ? 'bg-amber-500 text-slate-950' : 'bg-graphite-900 text-slate-400'
+                    className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
+                      previewLang === l ? 'bg-amber-500/20 text-amber-200 border border-amber-500/40' : 'bg-graphite-900 text-slate-400 hover:text-slate-200'
                     }`}
                   >
                     {l === 'en' ? 'EN' : l === 'hi' ? 'हिन्दी' : 'मराठी'}
                   </button>
                 ))}
-                <button onClick={() => setPreviewModalOpen(false)} className="text-slate-400 hover:text-white ml-2 text-sm">×</button>
+                <button onClick={() => setPreviewModalOpen(false)} className="text-slate-400 hover:text-white ml-2 text-base">×</button>
               </div>
             </div>
 
-            <div className="bg-graphite-900 p-4 rounded-lg border border-amber-500/40 space-y-2 text-xs">
-              <h4 className="font-bold text-amber-300 text-sm">{currentAdvisory.headline}</h4>
-              <div className="text-[11px] text-slate-300"><strong>Location:</strong> {currentAdvisory.location}</div>
+            <div className="bg-graphite-900 p-4 rounded-lg border border-amber-500/30 space-y-2 text-xs font-sans">
+              <h4 className="font-heading font-semibold text-amber-300 text-sm">{currentAdvisory.headline}</h4>
+              <div className="text-xs text-slate-300"><strong>Location:</strong> {currentAdvisory.location}</div>
               <p className="text-slate-200 leading-relaxed">{currentAdvisory.situation}</p>
-              <div className="text-[11px] text-cyan-300"><strong>Time Window:</strong> {currentAdvisory.window}</div>
-              <div className="text-[11px] text-observation"><strong>Confidence:</strong> {currentAdvisory.confidence}</div>
+              <div className="text-xs text-sky-300"><strong>Time Window:</strong> {currentAdvisory.window}</div>
+              <div className="text-xs text-purple-300"><strong>Confidence:</strong> {currentAdvisory.confidence}</div>
 
               <div className="pt-2 border-t border-scientific-border space-y-1">
-                <span className="font-bold text-[11px] text-slate-200 block">Recommended Actions:</span>
-                <ul className="list-disc list-inside text-[10px] text-slate-300 space-y-0.5">
+                <span className="font-heading font-semibold text-xs text-slate-200 block">Recommended Actions:</span>
+                <ul className="list-disc list-inside text-xs text-slate-300 space-y-1">
                   {currentAdvisory.actions.map((act, i) => (
                     <li key={i}>{act}</li>
                   ))}
@@ -515,14 +515,14 @@ export const AuthorityCommandPage: React.FC = () => {
               </div>
             </div>
 
-            <p className="text-[10px] text-amber-400/90 italic">
+            <p className="text-xs font-sans text-amber-400/90 italic">
               *{currentAdvisory.disclaimer}
             </p>
 
             <div className="flex justify-end space-x-2 pt-2 border-t border-scientific-border">
               <button
                 onClick={() => setPreviewModalOpen(false)}
-                className="px-4 py-1.5 rounded bg-graphite-800 hover:bg-graphite-700 text-slate-200 text-xs font-bold"
+                className="px-4 py-1.5 rounded-md bg-graphite-850 hover:bg-graphite-800 text-slate-200 text-xs font-medium border border-scientific-border transition-colors"
               >
                 Close Preview
               </button>

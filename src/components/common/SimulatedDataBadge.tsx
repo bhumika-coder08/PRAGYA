@@ -1,5 +1,4 @@
 import React from 'react';
-import { AlertCircle } from 'lucide-react';
 
 interface SimulatedDataBadgeProps {
   className?: string;
@@ -12,15 +11,16 @@ export const SimulatedDataBadge: React.FC<SimulatedDataBadgeProps> = ({
 }) => {
   return (
     <span
-      className={`inline-flex items-center space-x-1.5 font-mono uppercase tracking-wider font-semibold rounded border ${
+      className={`inline-flex items-center space-x-1.5 font-sans font-medium rounded-full border border-slate-700/70 bg-slate-900/70 text-slate-300 transition-colors ${
         size === 'sm'
-          ? 'px-2 py-0.5 text-[10px] bg-amber-500/10 text-amber-400 border-amber-500/30'
-          : 'px-2.5 py-1 text-xs bg-amber-500/15 text-amber-300 border-amber-500/40'
+          ? 'px-2.5 py-0.5 text-[11px]'
+          : 'px-3 py-1 text-xs'
       } ${className}`}
-      title="Scientific Integrity Rule: All demonstration metrics are synthetic/simulated."
+      title="Scientific Integrity Protocol: Current experimental calculations use simulated benchmark data."
     >
-      <AlertCircle className={size === 'sm' ? 'w-3 h-3 text-amber-400' : 'w-3.5 h-3.5 text-amber-300'} />
-      <span>DEMO / SIMULATED DATA</span>
+      <span className="w-1.5 h-1.5 rounded-full bg-amber-400/90 shrink-0" />
+      <span>Simulated Demonstration Data</span>
     </span>
   );
 };
+

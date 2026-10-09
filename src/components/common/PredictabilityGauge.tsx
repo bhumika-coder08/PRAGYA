@@ -31,40 +31,40 @@ export const PredictabilityGauge: React.FC<PredictabilityGaugeProps> = ({
       {/* Header */}
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center space-x-1.5">
-          <Target className="w-4 h-4 text-predictability" />
-          <span className="text-xs font-mono font-semibold text-slate-300 tracking-wider uppercase">
+          <Target className="w-4 h-4 text-purple-400" />
+          <span className="text-xs font-heading font-semibold text-slate-200 tracking-wide">
             {label}
           </span>
         </div>
-        <span className="text-[10px] font-mono text-predictability-light uppercase px-1.5 py-0.5 rounded bg-predictability/15 border border-predictability/40">
-          CONFIDENCE HORIZON
+        <span className="text-[10px] font-sans font-medium text-purple-300 px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20">
+          Confidence Horizon
         </span>
       </div>
 
       <div className="flex items-center justify-between my-1">
         {/* Metric text */}
         <div>
-          <div className="flex items-baseline space-x-1">
+          <div className="flex items-baseline space-x-1.5">
             <span
-              className={`font-mono font-bold tabular-nums ${
+              className={`font-mono font-semibold tabular-nums ${
                 size === 'lg' ? 'text-3xl' : 'text-2xl'
-              } ${isThresholdPassed ? 'text-predictability-light' : 'text-slate-400'}`}
+              } ${isThresholdPassed ? 'text-purple-300' : 'text-slate-400'}`}
             >
               {clamped}%
             </span>
-            <span className="text-xs text-scientific-muted font-mono">CONFIDENCE</span>
+            <span className="text-[11px] text-slate-400 font-sans">Confidence</span>
           </div>
 
-          <div className="mt-1 flex items-center space-x-1 text-[11px] font-mono">
+          <div className="mt-1 flex items-center space-x-1 text-xs font-sans">
             {isThresholdPassed ? (
               <span className="inline-flex items-center space-x-1 text-emerald-400">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>DEFENSIBLE WINDOW</span>
+                <span className="font-medium">Defensible Window</span>
               </span>
             ) : (
               <span className="inline-flex items-center space-x-1 text-amber-400">
                 <ShieldAlert className="w-3.5 h-3.5" />
-                <span>HIGH AMBIGUITY</span>
+                <span className="font-medium">High Ambiguity</span>
               </span>
             )}
           </div>
@@ -75,7 +75,7 @@ export const PredictabilityGauge: React.FC<PredictabilityGaugeProps> = ({
           <svg height={radius * 2} width={radius * 2} className="transform -rotate-90">
             {/* Background ring */}
             <circle
-              stroke="#1e293b"
+              stroke="#172235"
               fill="transparent"
               strokeWidth={strokeWidth}
               r={normalizedRadius}
@@ -84,7 +84,7 @@ export const PredictabilityGauge: React.FC<PredictabilityGaugeProps> = ({
             />
             {/* Threshold marker tick */}
             <circle
-              stroke="#475569"
+              stroke="#334155"
               strokeDasharray={`${(threshold / 100) * circumference} ${circumference}`}
               strokeDashoffset="0"
               fill="transparent"
@@ -96,7 +96,7 @@ export const PredictabilityGauge: React.FC<PredictabilityGaugeProps> = ({
             />
             {/* Active value ring */}
             <circle
-              stroke={isThresholdPassed ? '#a855f7' : '#64748b'}
+              stroke={isThresholdPassed ? '#c084fc' : '#64748b'}
               fill="transparent"
               strokeWidth={strokeWidth}
               strokeDasharray={`${circumference} ${circumference}`}
@@ -109,7 +109,7 @@ export const PredictabilityGauge: React.FC<PredictabilityGaugeProps> = ({
             />
           </svg>
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <span className="text-[10px] font-mono text-scientific-muted">
+            <span className="text-[11px] font-mono text-slate-400 font-medium">
               {threshold}%
             </span>
           </div>
@@ -117,15 +117,15 @@ export const PredictabilityGauge: React.FC<PredictabilityGaugeProps> = ({
       </div>
 
       {/* Threshold Status bar */}
-      <div className="mt-2 text-[10px] font-mono text-scientific-muted flex items-center justify-between border-t border-scientific-border/60 pt-2">
-        <span>CRITICAL THRESHOLD: {threshold}%</span>
-        <span>
-          {isThresholdPassed ? 'SEPARATED FROM NOISE' : 'SUBSUMED BY DIVERGENCE'}
+      <div className="mt-2 text-xs font-sans text-slate-400 flex items-center justify-between border-t border-scientific-border/60 pt-2">
+        <span className="text-[11px]">Critical threshold: <strong className="font-mono text-slate-300 font-medium">{threshold}%</strong></span>
+        <span className="text-[11px] font-medium text-slate-300">
+          {isThresholdPassed ? 'Separated from noise' : 'Subsumed by divergence'}
         </span>
       </div>
 
       {showExplanation && (
-        <p className="mt-2 text-[11px] text-scientific-muted leading-tight">
+        <p className="mt-2 text-[11px] text-slate-400 font-sans leading-relaxed">
           Degree to which atmospheric state distinguishes this outcome from plausible alternatives.
         </p>
       )}

@@ -35,30 +35,30 @@ export const RiskGauge: React.FC<RiskGaugeProps> = ({
     <div className="bg-graphite-900 border border-scientific-border rounded-lg p-3.5 flex flex-col justify-between">
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center space-x-1.5">
-          <Flame className="w-4 h-4 text-red-400" />
-          <span className="text-xs font-mono font-semibold text-slate-300 tracking-wider uppercase">
+          <Flame className="w-4 h-4 text-rose-400" />
+          <span className="text-xs font-heading font-semibold text-slate-200 tracking-wide">
             {label}
           </span>
         </div>
-        <span className="text-[10px] font-mono text-scientific-muted uppercase px-1.5 py-0.5 rounded bg-graphite-800 border border-scientific-border">
-          LIKELIHOOD
+        <span className="text-[10px] font-sans font-medium text-slate-400 px-2 py-0.5 rounded bg-graphite-950 border border-scientific-border">
+          Likelihood
         </span>
       </div>
 
       <div className="flex items-baseline justify-between mb-2">
-        <div className="flex items-baseline space-x-1">
-          <span className={`font-mono font-bold tabular-nums ${size === 'lg' ? 'text-3xl' : 'text-2xl'} ${clamped >= 70 ? 'text-red-400' : clamped >= 40 ? 'text-amber-400' : 'text-emerald-400'}`}>
+        <div className="flex items-baseline space-x-1.5">
+          <span className={`font-mono font-semibold tabular-nums ${size === 'lg' ? 'text-3xl' : 'text-2xl'} ${clamped >= 70 ? 'text-rose-400' : clamped >= 40 ? 'text-amber-400' : 'text-emerald-400'}`}>
             {clamped}%
           </span>
-          <span className="text-xs text-scientific-muted font-mono">P(SEVERE)</span>
+          <span className="text-[11px] text-slate-400 font-sans">P(Severe)</span>
         </div>
-        <span className={`text-[11px] font-mono font-semibold px-2 py-0.5 rounded border ${tierColor}`}>
-          {clamped >= 75 ? 'HIGH THREAT' : clamped >= 45 ? 'ELEVATED' : 'LOW RISK'}
+        <span className={`text-[11px] font-sans font-medium px-2 py-0.5 rounded-md border ${tierColor}`}>
+          {clamped >= 75 ? 'High Threat' : clamped >= 45 ? 'Elevated' : 'Low Risk'}
         </span>
       </div>
 
       {/* Stepped progress track with warning threshold markers */}
-      <div className="relative w-full h-2.5 bg-graphite-950 rounded border border-scientific-border overflow-hidden">
+      <div className="relative w-full h-2 bg-graphite-950 rounded-full border border-scientific-border overflow-hidden">
         <div
           className={`h-full ${barColor} transition-all duration-500 ease-out`}
           style={{ width: `${clamped}%` }}
@@ -69,7 +69,7 @@ export const RiskGauge: React.FC<RiskGaugeProps> = ({
       </div>
 
       {showExplanation && (
-        <p className="mt-2 text-[11px] text-scientific-muted leading-tight">
+        <p className="mt-2 text-[11px] text-slate-400 font-sans leading-relaxed">
           Estimated probability of convective initiation and severe phenomena occurrence.
         </p>
       )}
